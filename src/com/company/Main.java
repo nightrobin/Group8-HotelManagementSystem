@@ -1134,4 +1134,5 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtRoomType3;
     private javax.swing.JTextField txtTotalBill;
     // End of variables declaration//GEN-END:variables
+    // test of changes
 }

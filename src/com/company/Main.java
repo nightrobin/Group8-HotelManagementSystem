@@ -4,6 +4,22 @@ package com.company;
 
 public class Main extends javax.swing.JFrame {
 
+    public HotelManagement() {
+        initComponents();
+        tableGuestsInfo.getColumnModel().getColumn(0).setPreferredWidth(80);
+        tableGuestsInfo.getColumnModel().getColumn(1).setPreferredWidth(100);
+        tableGuestsInfo.getColumnModel().getColumn(2).setPreferredWidth(235);
+        tableGuestsInfo.getColumnModel().getColumn(3).setPreferredWidth(120);
+        tableGuestsInfo.getColumnModel().getColumn(4).setPreferredWidth(112);
+
+        tableRevenue.getColumnModel().getColumn(0).setPreferredWidth(80);
+        tableRevenue.getColumnModel().getColumn(1).setPreferredWidth(80);
+        tableRevenue.getColumnModel().getColumn(2).setPreferredWidth(100);
+        tableRevenue.getColumnModel().getColumn(3).setPreferredWidth(100);
+        tableRevenue.getColumnModel().getColumn(4).setPreferredWidth(130);
+        tableRevenue.getColumnModel().getColumn(5).setPreferredWidth(157);
+    }
+
 
     public Main() {
         initComponents();
@@ -967,14 +983,26 @@ public class Main extends javax.swing.JFrame {
 
     private void tabGuestsProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabGuestsProfileActionPerformed
         // TODO add your handling code here:
+        pnlContent.removeAll();
+        pnlContent.add(pnlGuestsProfile);
+        pnlContent.repaint();
+        pnlContent.revalidate();
     }//GEN-LAST:event_tabGuestsProfileActionPerformed
 
     private void tabRoomMngtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabRoomMngtActionPerformed
         // TODO add your handling code here:
+        pnlContent.removeAll();
+        pnlContent.add(pnlRoomMngt);
+        pnlContent.repaint();
+        pnlContent.revalidate();
     }//GEN-LAST:event_tabRoomMngtActionPerformed
 
     private void tabRevenueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabRevenueActionPerformed
         // TODO add your handling code here:
+        pnlContent.removeAll();
+        pnlContent.add(pnlRevenue);
+        pnlContent.repaint();
+        pnlContent.revalidate();
     }//GEN-LAST:event_tabRevenueActionPerformed
 
     private void btnReserveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReserveActionPerformed
@@ -985,37 +1013,41 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelActionPerformed
 
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
+
     private void btnCheckInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckInActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCheckInActionPerformed
+
+    private void txtName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtName1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtName1ActionPerformed
 
     private void btnCancel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancel1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCancel1ActionPerformed
 
-    private void btnCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckOutActionPerformed
+    private void btnCheckIn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckIn1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCheckOutActionPerformed
+    }//GEN-LAST:event_btnCheckIn1ActionPerformed
 
-    private void btnCancel3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancel3ActionPerformed
+    private void txtName2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtName2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancel3ActionPerformed
+    }//GEN-LAST:event_txtName2ActionPerformed
 
-    private void txtRoomType2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRoomType2ActionPerformed
+    private void btnCancel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancel2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtRoomType2ActionPerformed
+    }//GEN-LAST:event_btnCancel2ActionPerformed
 
-    private void txtRoomType3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRoomType3ActionPerformed
+    private void btnCheckIn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckIn2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtRoomType3ActionPerformed
+    }//GEN-LAST:event_btnCheckIn2ActionPerformed
 
-    private void txtFeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFeeActionPerformed
+    private void btnSearch2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearch2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtFeeActionPerformed
-
-    private void txtTotalBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalBillActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTotalBillActionPerformed
+    }//GEN-LAST:event_btnSearch2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1034,20 +1066,20 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HotelManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HotelManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HotelManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HotelManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main().setVisible(true);
+                new HotelManagement().setVisible(true);
             }
         });
     }
@@ -1055,12 +1087,21 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnCancel1;
-    private javax.swing.JButton btnCancel3;
+    private javax.swing.JButton btnCancel2;
     private javax.swing.JButton btnCheckIn;
-    private javax.swing.JButton btnCheckOut;
+    private javax.swing.JButton btnCheckIn1;
+    private javax.swing.JButton btnCheckIn2;
     private javax.swing.JButton btnReserve;
+    private javax.swing.JButton btnSearch2;
     private javax.swing.JComboBox<String> cmbRoomType;
     private javax.swing.JComboBox<String> cmbRoomType1;
+    private javax.swing.JComboBox<String> cmbRoomType2;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel lblAmenities;
     private javax.swing.JLabel lblCINTime;
     private javax.swing.JLabel lblCINTime1;
@@ -1070,40 +1111,62 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel lblCOUTTime1;
     private javax.swing.JLabel lblCheckIn;
     private javax.swing.JLabel lblCheckIn1;
+    private javax.swing.JLabel lblCheckIn3;
     private javax.swing.JLabel lblCheckOut;
     private javax.swing.JLabel lblCheckOut1;
+    private javax.swing.JLabel lblCheckOut3;
+    private javax.swing.JLabel lblCheckOut4;
     private javax.swing.JLabel lblContactNo;
     private javax.swing.JLabel lblContactNo1;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblDate1;
+    private javax.swing.JLabel lblDate2;
     private javax.swing.JLabel lblDestinations;
-    private javax.swing.JLabel lblFee;
     private javax.swing.JLabel lblGuestsName;
     private javax.swing.JLabel lblGuestsName1;
+    private javax.swing.JLabel lblGuestsName2;
     private javax.swing.JLabel lblGuestsName3;
     private javax.swing.JLabel lblHome;
     private javax.swing.JLabel lblHotelName;
-    private javax.swing.JLabel lblHours;
+    private javax.swing.JLabel lblInputCheckIn;
+    private javax.swing.JLabel lblInputCheckOut;
+    private javax.swing.JLabel lblInputCheckOut1;
+    private javax.swing.JLabel lblInputName;
+    private javax.swing.JLabel lblInputName1;
     private javax.swing.JLabel lblNoOfGuests;
     private javax.swing.JLabel lblNoOfGuests1;
+    private javax.swing.JLabel lblNoOfGuests2;
+    private javax.swing.JLabel lblNoOfHours;
+    private javax.swing.JLabel lblNoOfHours1;
+    private javax.swing.JLabel lblNoOfHours2;
     private javax.swing.JLabel lblRoomType;
     private javax.swing.JLabel lblRoomType1;
     private javax.swing.JLabel lblRoomType2;
+    private javax.swing.JLabel lblRoomType3;
     private javax.swing.JLabel lblRooms;
     private javax.swing.JLabel lblSelectRoomNo;
     private javax.swing.JLabel lblSelectRoomNo1;
+    private javax.swing.JLabel lblSelectRoomNo2;
     private javax.swing.JLabel lblSelectRoomNo3;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblTitle1;
+    private javax.swing.JLabel lblTitle2;
     private javax.swing.JLabel lblTitle3;
-    private javax.swing.JLabel lblTotalBill;
+    private javax.swing.JLabel lblTitle4;
+    private javax.swing.JLabel lblTitle5;
+    private javax.swing.JLabel lblTotalRevenue;
+    private javax.swing.JPanel pnlBody;
     private javax.swing.JPanel pnlCheckIn;
     private javax.swing.JPanel pnlCheckOut;
     private javax.swing.JPanel pnlContent;
-    private javax.swing.JPanel pnlHome;
+    private javax.swing.JPanel pnlGuestsProfile;
+    private javax.swing.JPanel pnlHomeTab;
     private javax.swing.JPanel pnlReservation;
+    private javax.swing.JPanel pnlRevenue;
+    private javax.swing.JPanel pnlRoomMngt;
     private javax.swing.JPanel pnlTop;
     private javax.swing.JPanel pnlTransparent;
+    private javax.swing.JPanel pnltabHome;
     private javax.swing.JButton tabCheckIn;
     private javax.swing.JButton tabCheckOut;
     private javax.swing.JButton tabGuestsProfile;
@@ -1111,6 +1174,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton tabRevenue;
     private javax.swing.JButton tabRoomMngt;
     private javax.swing.JLabel tabServices;
+    private javax.swing.JTable tableGuestsInfo;
+    private javax.swing.JTable tableRevenue;
     private javax.swing.JTextField txtCINDate;
     private javax.swing.JTextField txtCINDate1;
     private javax.swing.JTextField txtCINTime;
@@ -1121,18 +1186,20 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtCOUTTime1;
     private javax.swing.JTextField txtContactNo;
     private javax.swing.JTextField txtContactNo1;
-    private javax.swing.JTextField txtFee;
+    private javax.swing.JTextField txtDate;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtName1;
-    private javax.swing.JTextField txtName3;
+    private javax.swing.JTextField txtName2;
     private javax.swing.JTextField txtNoOfGuests;
     private javax.swing.JTextField txtNoOfGuests1;
+    private javax.swing.JTextField txtNoOfHours;
+    private javax.swing.JTextField txtNoOfHours1;
+    private javax.swing.JTextField txtNoOfHours2;
+    private javax.swing.JTextField txtRevenue;
     private javax.swing.JTextField txtRoomNo;
     private javax.swing.JTextField txtRoomNo1;
+    private javax.swing.JTextField txtRoomNo2;
     private javax.swing.JTextField txtRoomNo3;
-    private javax.swing.JTextField txtRoomType2;
-    private javax.swing.JTextField txtRoomType3;
-    private javax.swing.JTextField txtTotalBill;
+    private javax.swing.JTextField txtRoomType;
     // End of variables declaration//GEN-END:variables
-    // test of changes
 }

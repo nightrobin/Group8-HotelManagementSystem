@@ -1,28 +1,83 @@
 
 package com.company;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Insets;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.UIManager;
+import javax.swing.plaf.basic.BasicTabbedPaneUI;
+import javax.swing.table.*;
+import javax.swing.ImageIcon;
+
 
 public class Main extends javax.swing.JFrame {
-
-    public HotelManagement() {
-        initComponents();
-        tableGuestsInfo.getColumnModel().getColumn(0).setPreferredWidth(80);
-        tableGuestsInfo.getColumnModel().getColumn(1).setPreferredWidth(100);
-        tableGuestsInfo.getColumnModel().getColumn(2).setPreferredWidth(235);
-        tableGuestsInfo.getColumnModel().getColumn(3).setPreferredWidth(120);
-        tableGuestsInfo.getColumnModel().getColumn(4).setPreferredWidth(112);
-
-        tableRevenue.getColumnModel().getColumn(0).setPreferredWidth(80);
-        tableRevenue.getColumnModel().getColumn(1).setPreferredWidth(80);
-        tableRevenue.getColumnModel().getColumn(2).setPreferredWidth(100);
-        tableRevenue.getColumnModel().getColumn(3).setPreferredWidth(100);
-        tableRevenue.getColumnModel().getColumn(4).setPreferredWidth(130);
-        tableRevenue.getColumnModel().getColumn(5).setPreferredWidth(157);
-    }
 
 
     public Main() {
         initComponents();
+
+        tableReserve.getColumnModel().getColumn(0).setPreferredWidth(65);
+        tableReserve.getColumnModel().getColumn(1).setPreferredWidth(80);
+        tableReserve.getColumnModel().getColumn(2).setPreferredWidth(158);
+        tableReserve.getColumnModel().getColumn(3).setPreferredWidth(110);
+        tableReserve.getColumnModel().getColumn(4).setPreferredWidth(110);
+
+        tableGuestsProfile.getColumnModel().getColumn(0).setPreferredWidth(30);
+        tableGuestsProfile.getColumnModel().getColumn(1).setPreferredWidth(70);
+        tableGuestsProfile.getColumnModel().getColumn(2).setPreferredWidth(80);
+        tableGuestsProfile.getColumnModel().getColumn(3).setPreferredWidth(170);
+        tableGuestsProfile.getColumnModel().getColumn(4).setPreferredWidth(90);
+        tableGuestsProfile.getColumnModel().getColumn(5).setPreferredWidth(85);
+        tableGuestsProfile.getColumnModel().getColumn(6).setPreferredWidth(122);
+        tableGuestsProfile.getColumnModel().getColumn(7).setPreferredWidth(122);
+
+        tableRevenue.getColumnModel().getColumn(0).setPreferredWidth(130);
+        tableRevenue.getColumnModel().getColumn(1).setPreferredWidth(80);
+        tableRevenue.getColumnModel().getColumn(2).setPreferredWidth(90);
+        tableRevenue.getColumnModel().getColumn(3).setPreferredWidth(120);
+        tableRevenue.getColumnModel().getColumn(4).setPreferredWidth(120);
+        tableRevenue.getColumnModel().getColumn(5).setPreferredWidth(120);
+    }
+
+    public void Reserve () {
+    }
+
+    public void CancelReserve() {
+
+    }
+
+    public void CheckIn() {
+
+    }
+
+    public void CheckOut() throws ParseException {
+
+    }
+
+    public void Clear() {
+
+    }
+
+    public void Search() {
+
+    }
+
+    public void RevenueSearch() {
+
     }
 
 
@@ -30,1024 +85,1011 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlTransparent = new javax.swing.JPanel();
-        tabReservation = new javax.swing.JButton();
-        tabCheckIn = new javax.swing.JButton();
-        tabCheckOut = new javax.swing.JButton();
-        tabGuestsProfile = new javax.swing.JButton();
-        tabRoomMngt = new javax.swing.JButton();
-        tabRevenue = new javax.swing.JButton();
-        tabServices = new javax.swing.JLabel();
         pnlTop = new javax.swing.JPanel();
-        pnlHome = new javax.swing.JPanel();
+        pnltabHome = new javax.swing.JPanel();
         lblHome = new javax.swing.JLabel();
         lblRooms = new javax.swing.JLabel();
         lblAmenities = new javax.swing.JLabel();
         lblDestinations = new javax.swing.JLabel();
         lblHotelName = new javax.swing.JLabel();
-        pnlContent = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
+        pnlBody = new javax.swing.JPanel();
+        pnlHomeTab = new javax.swing.JPanel();
+        lblServices = new javax.swing.JLabel();
+        tabServices = new javax.swing.JTabbedPane();
         pnlReservation = new javax.swing.JPanel();
+        lblReserveName = new javax.swing.JLabel();
+        txtReserveName = new javax.swing.JTextField();
+        lblReserveContact = new javax.swing.JLabel();
+        txtReserveContact = new javax.swing.JTextField();
+        lblReserveCIN = new javax.swing.JLabel();
+        txtReserveCheckIn = new javax.swing.JTextField();
+        lblReserveCOUT = new javax.swing.JLabel();
+        txtReserveCheckOut = new javax.swing.JTextField();
+        lblReserveNo = new javax.swing.JLabel();
+        txtReserveNo = new javax.swing.JTextField();
+        lblReserveType = new javax.swing.JLabel();
+        cmbReserveType = new javax.swing.JComboBox<>();
+        lblReserveCheckIn = new javax.swing.JLabel();
+        lblReserveCheckOut = new javax.swing.JLabel();
         btnReserve = new javax.swing.JButton();
-        lblTitle = new javax.swing.JLabel();
-        lblGuestsName = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
-        txtContactNo = new javax.swing.JTextField();
-        txtCINDate = new javax.swing.JTextField();
-        lblDate = new javax.swing.JLabel();
-        txtCINTime = new javax.swing.JTextField();
-        lblCheckIn = new javax.swing.JLabel();
-        lblCINTime = new javax.swing.JLabel();
-        txtCOUTDate = new javax.swing.JTextField();
-        lblCOUTDate = new javax.swing.JLabel();
-        txtCOUTTime = new javax.swing.JTextField();
-        lblCheckOut = new javax.swing.JLabel();
-        lblCOUTTime = new javax.swing.JLabel();
-        lblRoomType = new javax.swing.JLabel();
-        cmbRoomType = new javax.swing.JComboBox<>();
-        btnCancel = new javax.swing.JButton();
-        lblNoOfGuests = new javax.swing.JLabel();
-        txtNoOfGuests = new javax.swing.JTextField();
-        lblContactNo = new javax.swing.JLabel();
-        txtRoomNo = new javax.swing.JTextField();
-        lblSelectRoomNo = new javax.swing.JLabel();
+        btnReserveCancel = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableReserve = new javax.swing.JTable();
         pnlCheckIn = new javax.swing.JPanel();
+        lblCheckInNo = new javax.swing.JLabel();
+        lblCheckInName = new javax.swing.JLabel();
+        txtCheckInNo = new javax.swing.JTextField();
+        txtCheckInName = new javax.swing.JTextField();
+        lblCheckInType = new javax.swing.JLabel();
+        lblCheckInContact = new javax.swing.JLabel();
+        cmbCheckInType = new javax.swing.JComboBox<>();
+        txtCheckInContact = new javax.swing.JTextField();
+        lblCheckInCIN1 = new javax.swing.JLabel();
+        lblCheckInCIN = new javax.swing.JLabel();
+        txtCheckInCIN = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        btnCheckInCancel = new javax.swing.JButton();
         btnCheckIn = new javax.swing.JButton();
-        lblTitle1 = new javax.swing.JLabel();
-        lblGuestsName1 = new javax.swing.JLabel();
-        txtName1 = new javax.swing.JTextField();
-        txtContactNo1 = new javax.swing.JTextField();
-        txtCINDate1 = new javax.swing.JTextField();
-        lblDate1 = new javax.swing.JLabel();
-        txtCINTime1 = new javax.swing.JTextField();
-        lblCheckIn1 = new javax.swing.JLabel();
-        lblCINTime1 = new javax.swing.JLabel();
-        txtCOUTDate1 = new javax.swing.JTextField();
-        lblCOUTDate1 = new javax.swing.JLabel();
-        txtCOUTTime1 = new javax.swing.JTextField();
-        lblCheckOut1 = new javax.swing.JLabel();
-        lblCOUTTime1 = new javax.swing.JLabel();
-        lblRoomType1 = new javax.swing.JLabel();
-        cmbRoomType1 = new javax.swing.JComboBox<>();
-        btnCancel1 = new javax.swing.JButton();
-        lblNoOfGuests1 = new javax.swing.JLabel();
-        txtNoOfGuests1 = new javax.swing.JTextField();
-        lblContactNo1 = new javax.swing.JLabel();
-        txtRoomNo1 = new javax.swing.JTextField();
-        lblSelectRoomNo1 = new javax.swing.JLabel();
         pnlCheckOut = new javax.swing.JPanel();
+        lblCheckOutName = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        txtCheckOutName = new javax.swing.JTextField();
         btnCheckOut = new javax.swing.JButton();
-        lblTitle3 = new javax.swing.JLabel();
-        lblGuestsName3 = new javax.swing.JLabel();
-        txtName3 = new javax.swing.JTextField();
-        btnCancel3 = new javax.swing.JButton();
-        txtRoomNo3 = new javax.swing.JTextField();
-        lblSelectRoomNo3 = new javax.swing.JLabel();
-        lblRoomType2 = new javax.swing.JLabel();
-        txtRoomType2 = new javax.swing.JTextField();
-        lblHours = new javax.swing.JLabel();
-        txtRoomType3 = new javax.swing.JTextField();
-        lblFee = new javax.swing.JLabel();
-        txtFee = new javax.swing.JTextField();
-        lblTotalBill = new javax.swing.JLabel();
-        txtTotalBill = new javax.swing.JTextField();
+        lblCheckOutRoomNo = new javax.swing.JLabel();
+        txtCheckOutRoomNo = new javax.swing.JTextField();
+        lblCheckOutType = new javax.swing.JLabel();
+        txtCheckOutType = new javax.swing.JTextField();
+        lblCheckOutFee = new javax.swing.JLabel();
+        txtCheckOutFee = new javax.swing.JTextField();
+        txtCheckOutCOUT = new javax.swing.JTextField();
+        lblCheckOutCOUT = new javax.swing.JLabel();
+        lblCheckOutDate = new javax.swing.JLabel();
+        txtCheckOutNo = new javax.swing.JTextField();
+        lblCheckOutNo = new javax.swing.JLabel();
+        txtCheckOutTotal = new javax.swing.JTextField();
+        lblCheckOutTotal = new javax.swing.JLabel();
+        btnClear = new javax.swing.JButton();
+        pnlRoomsProfile = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableGuestsProfile = new javax.swing.JTable();
+        btnSearch = new javax.swing.JButton();
+        txtSearch = new javax.swing.JTextField();
+        btnRoomsClear = new javax.swing.JButton();
+        cmbStatus = new javax.swing.JComboBox<>();
+        pnlRevenueSearch = new javax.swing.JPanel();
+        btnRevenueSearch = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tableRevenue = new javax.swing.JTable();
+        txtRevenueSearch = new javax.swing.JTextField();
+        lblCheckInContact1 = new javax.swing.JLabel();
+        txtRevenue = new javax.swing.JTextField();
+        lblRevenue = new javax.swing.JLabel();
+        btnRevenueClear = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        pnlRoomTab = new javax.swing.JPanel();
+        lblServices1 = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        jSeparator8 = new javax.swing.JSeparator();
+        lblSingle = new javax.swing.JLabel();
+        lblDouble = new javax.swing.JLabel();
+        lblDeluxe = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        txtareaSingle = new javax.swing.JTextArea();
+        lblRoomsSingle = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        txtareaDouble = new javax.swing.JTextArea();
+        lblRoomsDouble = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        txtareaDeluxeSuite = new javax.swing.JTextArea();
+        lblRoomsDeluxeSuite = new javax.swing.JLabel();
+        pnlAmenities = new javax.swing.JPanel();
+        lblServices2 = new javax.swing.JLabel();
+        jSeparator9 = new javax.swing.JSeparator();
+        jSeparator10 = new javax.swing.JSeparator();
+        lblGym = new javax.swing.JLabel();
+        lblDining = new javax.swing.JLabel();
+        lblSwimmingPool = new javax.swing.JLabel();
+        lblSpa = new javax.swing.JLabel();
+        lblAmSwimmingPool = new javax.swing.JLabel();
+        lblAmDining = new javax.swing.JLabel();
+        lblAmGym = new javax.swing.JLabel();
+        lblAmSpa = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtareaDining = new javax.swing.JTextArea();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        txtareaPool = new javax.swing.JTextArea();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        txtareaPool1 = new javax.swing.JTextArea();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        txtareaPool2 = new javax.swing.JTextArea();
+        pnlDestinations = new javax.swing.JPanel();
+        lblServices3 = new javax.swing.JLabel();
+        jSeparator11 = new javax.swing.JSeparator();
+        jSeparator13 = new javax.swing.JSeparator();
+        lblMalls = new javax.swing.JLabel();
+        lblMalls1 = new javax.swing.JLabel();
+        lblMalls2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        pnlTransparent.setBackground(new java.awt.Color(102, 51, 0));
+        pnlTop.setBackground(new java.awt.Color(172, 127, 98));
 
-        tabReservation.setBackground(new java.awt.Color(43, 24, 15));
-        tabReservation.setFont(new java.awt.Font("Bebas Neue", 0, 18)); // NOI18N
-        tabReservation.setForeground(new java.awt.Color(251, 232, 189));
-        tabReservation.setText("RESERVATION");
-        tabReservation.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tabReservationActionPerformed(evt);
+        pnltabHome.setBackground(new java.awt.Color(187, 157, 142));
+        pnltabHome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnltabHomeMouseClicked(evt);
             }
         });
-
-        tabCheckIn.setBackground(new java.awt.Color(43, 24, 15));
-        tabCheckIn.setFont(new java.awt.Font("Bebas Neue", 0, 18)); // NOI18N
-        tabCheckIn.setForeground(new java.awt.Color(251, 232, 189));
-        tabCheckIn.setText("CHECK-IN");
-        tabCheckIn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tabCheckInActionPerformed(evt);
-            }
-        });
-
-        tabCheckOut.setBackground(new java.awt.Color(43, 24, 15));
-        tabCheckOut.setFont(new java.awt.Font("Bebas Neue", 0, 18)); // NOI18N
-        tabCheckOut.setForeground(new java.awt.Color(251, 232, 189));
-        tabCheckOut.setText("CHECK-OUT");
-        tabCheckOut.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tabCheckOutActionPerformed(evt);
-            }
-        });
-
-        tabGuestsProfile.setBackground(new java.awt.Color(43, 24, 15));
-        tabGuestsProfile.setFont(new java.awt.Font("Bebas Neue", 0, 18)); // NOI18N
-        tabGuestsProfile.setForeground(new java.awt.Color(251, 232, 189));
-        tabGuestsProfile.setText("GUEST'S PROFILE");
-        tabGuestsProfile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tabGuestsProfileActionPerformed(evt);
-            }
-        });
-
-        tabRoomMngt.setBackground(new java.awt.Color(43, 24, 15));
-        tabRoomMngt.setFont(new java.awt.Font("Bebas Neue", 0, 18)); // NOI18N
-        tabRoomMngt.setForeground(new java.awt.Color(251, 232, 189));
-        tabRoomMngt.setText("ROOM MANAGEMENT");
-        tabRoomMngt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tabRoomMngtActionPerformed(evt);
-            }
-        });
-
-        tabRevenue.setBackground(new java.awt.Color(43, 24, 15));
-        tabRevenue.setFont(new java.awt.Font("Bebas Neue", 0, 18)); // NOI18N
-        tabRevenue.setForeground(new java.awt.Color(251, 232, 189));
-        tabRevenue.setText("REVENUE");
-        tabRevenue.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tabRevenueActionPerformed(evt);
-            }
-        });
-
-        tabServices.setFont(new java.awt.Font("Bebas Neue", 0, 24)); // NOI18N
-        tabServices.setForeground(new java.awt.Color(251, 232, 189));
-        tabServices.setText("SERVICES");
-
-        javax.swing.GroupLayout pnlTransparentLayout = new javax.swing.GroupLayout(pnlTransparent);
-        pnlTransparent.setLayout(pnlTransparentLayout);
-        pnlTransparentLayout.setHorizontalGroup(
-                pnlTransparentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlTransparentLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(pnlTransparentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(tabRevenue, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(tabGuestsProfile, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(tabReservation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(tabCheckIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(tabCheckOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(tabRoomMngt, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
-                                .addContainerGap())
-                        .addGroup(pnlTransparentLayout.createSequentialGroup()
-                                .addGap(56, 56, 56)
-                                .addComponent(tabServices)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnlTransparentLayout.setVerticalGroup(
-                pnlTransparentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTransparentLayout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tabServices)
-                                .addGap(18, 18, 18)
-                                .addComponent(tabReservation, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(tabCheckIn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(tabCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(tabGuestsProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(tabRoomMngt, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(tabRevenue, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34))
-        );
-
-        pnlTop.setBackground(new java.awt.Color(43, 24, 15));
-
-        pnlHome.setBackground(new java.awt.Color(169, 85, 0));
 
         lblHome.setFont(new java.awt.Font("Bebas Neue", 0, 30)); // NOI18N
-        lblHome.setForeground(new java.awt.Color(236, 202, 136));
+        lblHome.setForeground(new java.awt.Color(254, 237, 204));
         lblHome.setText("Home");
 
-        javax.swing.GroupLayout pnlHomeLayout = new javax.swing.GroupLayout(pnlHome);
-        pnlHome.setLayout(pnlHomeLayout);
-        pnlHomeLayout.setHorizontalGroup(
-                pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHomeLayout.createSequentialGroup()
-                                .addContainerGap(22, Short.MAX_VALUE)
-                                .addComponent(lblHome)
-                                .addGap(23, 23, 23))
+        javax.swing.GroupLayout pnltabHomeLayout = new javax.swing.GroupLayout(pnltabHome);
+        pnltabHome.setLayout(pnltabHomeLayout);
+        pnltabHomeLayout.setHorizontalGroup(
+            pnltabHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnltabHomeLayout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(lblHome)
+                .addGap(23, 23, 23))
         );
-        pnlHomeLayout.setVerticalGroup(
-                pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHomeLayout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblHome)
-                                .addGap(19, 19, 19))
+        pnltabHomeLayout.setVerticalGroup(
+            pnltabHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblHome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         lblRooms.setFont(new java.awt.Font("Bebas Neue", 0, 30)); // NOI18N
-        lblRooms.setForeground(new java.awt.Color(236, 202, 136));
+        lblRooms.setForeground(new java.awt.Color(254, 237, 204));
         lblRooms.setText("Rooms");
+        lblRooms.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblRoomsMouseClicked(evt);
+            }
+        });
 
         lblAmenities.setFont(new java.awt.Font("Bebas Neue", 0, 30)); // NOI18N
-        lblAmenities.setForeground(new java.awt.Color(236, 202, 136));
+        lblAmenities.setForeground(new java.awt.Color(254, 237, 204));
         lblAmenities.setText("Amenities");
+        lblAmenities.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAmenitiesMouseClicked(evt);
+            }
+        });
 
         lblDestinations.setFont(new java.awt.Font("Bebas Neue", 0, 30)); // NOI18N
-        lblDestinations.setForeground(new java.awt.Color(236, 202, 136));
+        lblDestinations.setForeground(new java.awt.Color(254, 237, 204));
         lblDestinations.setText("Destinations");
+        lblDestinations.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDestinationsMouseClicked(evt);
+            }
+        });
 
         lblHotelName.setFont(new java.awt.Font("Benguiat", 0, 36)); // NOI18N
-        lblHotelName.setForeground(new java.awt.Color(244, 211, 142));
+        lblHotelName.setForeground(new java.awt.Color(254, 237, 204));
         lblHotelName.setText("HYEITT HOTEL");
+
+        jLabel25.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\NetbeansFiles\\src\\logo.jpg")); // NOI18N
+        jLabel25.setText("jLabel25");
 
         javax.swing.GroupLayout pnlTopLayout = new javax.swing.GroupLayout(pnlTop);
         pnlTop.setLayout(pnlTopLayout);
         pnlTopLayout.setHorizontalGroup(
-                pnlTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlTopLayout.createSequentialGroup()
-                                .addGap(89, 89, 89)
-                                .addComponent(lblHotelName)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
-                                .addComponent(pnlHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(lblRooms)
-                                .addGap(28, 28, 28)
-                                .addComponent(lblAmenities)
-                                .addGap(26, 26, 26)
-                                .addComponent(lblDestinations)
-                                .addGap(18, 18, 18))
+            pnlTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTopLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblHotelName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnltabHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(lblRooms)
+                .addGap(28, 28, 28)
+                .addComponent(lblAmenities)
+                .addGap(26, 26, 26)
+                .addComponent(lblDestinations)
+                .addGap(18, 18, 18))
         );
         pnlTopLayout.setVerticalGroup(
-                pnlTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(pnlHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTopLayout.createSequentialGroup()
-                                .addContainerGap(20, Short.MAX_VALUE)
-                                .addGroup(pnlTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTopLayout.createSequentialGroup()
-                                                .addGroup(pnlTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(lblAmenities)
-                                                        .addComponent(lblDestinations)
-                                                        .addComponent(lblRooms))
-                                                .addGap(20, 20, 20))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTopLayout.createSequentialGroup()
-                                                .addComponent(lblHotelName)
-                                                .addGap(19, 19, 19))))
+            pnlTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnltabHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTopLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlTopLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(lblHotelName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addComponent(lblRooms, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblAmenities, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblDestinations, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pnlContent.setLayout(new java.awt.CardLayout());
+        pnlBody.setLayout(new java.awt.CardLayout());
 
-        pnlReservation.setBackground(new java.awt.Color(102, 51, 0));
+        pnlHomeTab.setBackground(new java.awt.Color(92, 130, 143));
 
-        btnReserve.setBackground(new java.awt.Color(43, 24, 15));
+        lblServices.setFont(new java.awt.Font("Bebas Neue", 0, 48)); // NOI18N
+        lblServices.setForeground(new java.awt.Color(254, 237, 204));
+        lblServices.setText("SERVICES");
+
+        tabServices.setBackground(new java.awt.Color(0, 0, 0));
+        tabServices.setForeground(new java.awt.Color(254, 237, 204));
+        tabServices.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        tabServices.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        tabServices.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tabServices.setFont(new java.awt.Font("Bebas Neue", 0, 24)); // NOI18N
+
+        pnlReservation.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        lblReserveName.setFont(new java.awt.Font("Bebas Neue", 0, 20)); // NOI18N
+        lblReserveName.setText("Guest's Name");
+
+        txtReserveName.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+
+        lblReserveContact.setFont(new java.awt.Font("Bebas Neue", 0, 20)); // NOI18N
+        lblReserveContact.setText("Contact Number");
+
+        txtReserveContact.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+
+        lblReserveCIN.setFont(new java.awt.Font("Bebas Neue", 0, 20)); // NOI18N
+        lblReserveCIN.setText("Check-In");
+
+        txtReserveCheckIn.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+
+        lblReserveCOUT.setFont(new java.awt.Font("Bebas Neue", 0, 20)); // NOI18N
+        lblReserveCOUT.setText("Check-Out");
+
+        txtReserveCheckOut.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+
+        lblReserveNo.setFont(new java.awt.Font("Bebas Neue", 0, 20)); // NOI18N
+        lblReserveNo.setText("No. of Guests");
+
+        txtReserveNo.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+
+        lblReserveType.setFont(new java.awt.Font("Bebas Neue", 0, 20)); // NOI18N
+        lblReserveType.setText("Room Type");
+
+        cmbReserveType.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+        cmbReserveType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Single", "Double", "Deluxe Suite" }));
+
+        lblReserveCheckIn.setFont(new java.awt.Font("Bebas Neue", 0, 11)); // NOI18N
+        lblReserveCheckIn.setText("MM-DD-YYYY HH:MM");
+
+        lblReserveCheckOut.setFont(new java.awt.Font("Bebas Neue", 0, 11)); // NOI18N
+        lblReserveCheckOut.setText("MM-DD-YYYY HH:MM");
+
+        btnReserve.setBackground(new java.awt.Color(127, 183, 202));
         btnReserve.setFont(new java.awt.Font("Bebas Neue", 0, 18)); // NOI18N
-        btnReserve.setForeground(new java.awt.Color(251, 232, 189));
-        btnReserve.setText("RESERVE");
+        btnReserve.setForeground(new java.awt.Color(61, 62, 62));
+        btnReserve.setText("Reserve");
         btnReserve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReserveActionPerformed(evt);
             }
         });
 
-        lblTitle.setFont(new java.awt.Font("Benguiat", 0, 55)); // NOI18N
-        lblTitle.setForeground(new java.awt.Color(244, 211, 142));
-        lblTitle.setText("RESERVATION");
-
-        lblGuestsName.setFont(new java.awt.Font("Bebas Neue", 0, 21)); // NOI18N
-        lblGuestsName.setForeground(new java.awt.Color(244, 211, 142));
-        lblGuestsName.setText("Guest's Name");
-
-        txtName.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
-
-        txtContactNo.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
-
-        txtCINDate.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
-
-        lblDate.setFont(new java.awt.Font("Bebas Neue", 0, 14)); // NOI18N
-        lblDate.setForeground(new java.awt.Color(244, 211, 142));
-        lblDate.setText("Date");
-
-        txtCINTime.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
-
-        lblCheckIn.setFont(new java.awt.Font("Bebas Neue", 0, 21)); // NOI18N
-        lblCheckIn.setForeground(new java.awt.Color(244, 211, 142));
-        lblCheckIn.setText("Check IN");
-
-        lblCINTime.setFont(new java.awt.Font("Bebas Neue", 0, 14)); // NOI18N
-        lblCINTime.setForeground(new java.awt.Color(244, 211, 142));
-        lblCINTime.setText("Time");
-
-        txtCOUTDate.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
-
-        lblCOUTDate.setFont(new java.awt.Font("Bebas Neue", 0, 14)); // NOI18N
-        lblCOUTDate.setForeground(new java.awt.Color(244, 211, 142));
-        lblCOUTDate.setText("Date");
-
-        txtCOUTTime.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
-
-        lblCheckOut.setFont(new java.awt.Font("Bebas Neue", 0, 21)); // NOI18N
-        lblCheckOut.setForeground(new java.awt.Color(244, 211, 142));
-        lblCheckOut.setText("Check Out");
-
-        lblCOUTTime.setFont(new java.awt.Font("Bebas Neue", 0, 14)); // NOI18N
-        lblCOUTTime.setForeground(new java.awt.Color(244, 211, 142));
-        lblCOUTTime.setText("Time");
-
-        lblRoomType.setFont(new java.awt.Font("Bebas Neue", 0, 21)); // NOI18N
-        lblRoomType.setForeground(new java.awt.Color(244, 211, 142));
-        lblRoomType.setText("rOOM TYPE");
-
-        cmbRoomType.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
-        cmbRoomType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Single", "Double", "Deluxe Suite" }));
-
-        btnCancel.setBackground(new java.awt.Color(43, 24, 15));
-        btnCancel.setFont(new java.awt.Font("Bebas Neue", 0, 18)); // NOI18N
-        btnCancel.setForeground(new java.awt.Color(251, 232, 189));
-        btnCancel.setText("Cancel");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+        btnReserveCancel.setBackground(new java.awt.Color(127, 183, 202));
+        btnReserveCancel.setFont(new java.awt.Font("Bebas Neue", 0, 18)); // NOI18N
+        btnReserveCancel.setForeground(new java.awt.Color(61, 62, 62));
+        btnReserveCancel.setText("Cancel Reservation");
+        btnReserveCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
+                btnReserveCancelActionPerformed(evt);
             }
         });
 
-        lblNoOfGuests.setFont(new java.awt.Font("Bebas Neue", 0, 21)); // NOI18N
-        lblNoOfGuests.setForeground(new java.awt.Color(244, 211, 142));
-        lblNoOfGuests.setText("NO. of GUests");
+        tableReserve.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"101", null, null, null, null},
+                {"102", null, null, null, null},
+                {"103", null, null, null, null},
+                {"104", null, null, null, null},
+                {"105", null, null, null, null},
+                {"106", null, null, null, null},
+                {"107", null, null, null, null},
+                {"108", null, null, null, null},
+                {"109", null, null, null, null},
+                {"110", null, null, null, null},
+                {"201", null, null, null, null},
+                {"202", null, null, null, null},
+                {"203", null, null, null, null},
+                {"204", null, null, null, null},
+                {"205", null, null, null, null},
+                {"206", null, null, null, null},
+                {"207", null, null, null, null},
+                {"208", null, null, null, null},
+                {"209", null, null, null, null},
+                {"210", null, null, null, null},
+                {"301", null, null, null, null},
+                {"302", null, null, null, null},
+                {"303", null, null, null, null},
+                {"304", null, null, null, null},
+                {"305", null, null, null, null},
+                {"306", null, null, null, null},
+                {"307", null, null, null, null},
+                {"308", null, null, null, null},
+                {"309", null, null, null, null},
+                {"310", null, null, null, null}
+            },
+            new String [] {
+                "Room No.", "Room Type", "Guest's Name", "Check-In", "Check-Out"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
 
-        txtNoOfGuests.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
-
-        lblContactNo.setFont(new java.awt.Font("Bebas Neue", 0, 21)); // NOI18N
-        lblContactNo.setForeground(new java.awt.Color(244, 211, 142));
-        lblContactNo.setText("Contact Number");
-
-        txtRoomNo.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
-
-        lblSelectRoomNo.setFont(new java.awt.Font("Bebas Neue", 0, 21)); // NOI18N
-        lblSelectRoomNo.setForeground(new java.awt.Color(244, 211, 142));
-        lblSelectRoomNo.setText("Select Room Number");
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableReserve.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tableReserve.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tableReserve);
+        if (tableReserve.getColumnModel().getColumnCount() > 0) {
+            tableReserve.getColumnModel().getColumn(0).setResizable(false);
+            tableReserve.getColumnModel().getColumn(1).setResizable(false);
+            tableReserve.getColumnModel().getColumn(2).setResizable(false);
+            tableReserve.getColumnModel().getColumn(3).setResizable(false);
+            tableReserve.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         javax.swing.GroupLayout pnlReservationLayout = new javax.swing.GroupLayout(pnlReservation);
         pnlReservation.setLayout(pnlReservationLayout);
         pnlReservationLayout.setHorizontalGroup(
-                pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlReservationLayout.createSequentialGroup()
-                                .addGap(42, 42, 42)
+            pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlReservationLayout.createSequentialGroup()
+                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlReservationLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlReservationLayout.createSequentialGroup()
+                                .addComponent(lblReserveNo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtReserveNo, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReservationLayout.createSequentialGroup()
+                                    .addComponent(lblReserveContact)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtReserveContact, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReservationLayout.createSequentialGroup()
+                                    .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(pnlReservationLayout.createSequentialGroup()
+                                            .addComponent(lblReserveType)
+                                            .addGap(59, 59, 59))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlReservationLayout.createSequentialGroup()
+                                            .addComponent(lblReserveName)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(cmbReserveType, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtReserveName, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(pnlReservationLayout.createSequentialGroup()
                                 .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(pnlReservationLayout.createSequentialGroup()
-                                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(lblGuestsName)
-                                                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGroup(pnlReservationLayout.createSequentialGroup()
-                                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(pnlReservationLayout.createSequentialGroup()
-                                                                .addComponent(lblTitle)
-                                                                .addGap(0, 0, Short.MAX_VALUE))
-                                                        .addGroup(pnlReservationLayout.createSequentialGroup()
-                                                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addComponent(lblCheckIn)
-                                                                                .addGroup(pnlReservationLayout.createSequentialGroup()
-                                                                                        .addComponent(txtCINDate, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                        .addGap(18, 18, 18)
-                                                                                        .addComponent(txtCINTime, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                                        .addGroup(pnlReservationLayout.createSequentialGroup()
-                                                                                .addGap(49, 49, 49)
-                                                                                .addComponent(lblDate)
-                                                                                .addGap(125, 125, 125)
-                                                                                .addComponent(lblCINTime)
-                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addComponent(lblCheckOut)
-                                                                                .addGroup(pnlReservationLayout.createSequentialGroup()
-                                                                                        .addComponent(txtCOUTDate, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                        .addGap(18, 18, 18)
-                                                                                        .addComponent(txtCOUTTime, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                .addGroup(pnlReservationLayout.createSequentialGroup()
-                                                                                        .addGap(48, 48, 48)
-                                                                                        .addComponent(lblCOUTDate)
-                                                                                        .addGap(125, 125, 125)
-                                                                                        .addComponent(lblCOUTTime))))
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                                                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                                        .addGroup(pnlReservationLayout.createSequentialGroup()
-                                                                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                        .addComponent(lblRoomType)
-                                                                                        .addComponent(cmbRoomType, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                        .addGroup(pnlReservationLayout.createSequentialGroup()
-                                                                                                .addGap(33, 33, 33)
-                                                                                                .addComponent(lblNoOfGuests))
-                                                                                        .addGroup(pnlReservationLayout.createSequentialGroup()
-                                                                                                .addGap(18, 18, 18)
-                                                                                                .addComponent(txtNoOfGuests, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                                                        .addComponent(lblContactNo)
-                                                                        .addComponent(txtContactNo, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addGroup(pnlReservationLayout.createSequentialGroup()
-                                                                                .addComponent(lblSelectRoomNo)
-                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                                .addComponent(txtRoomNo, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                                .addGap(72, 72, 72))))
-                        .addGroup(pnlReservationLayout.createSequentialGroup()
-                                .addGap(279, 279, 279)
-                                .addComponent(btnReserve)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCancel)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(lblReserveCIN)
+                                    .addComponent(lblReserveCOUT))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtReserveCheckIn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                                    .addComponent(txtReserveCheckOut, javax.swing.GroupLayout.Alignment.LEADING))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReservationLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReservationLayout.createSequentialGroup()
+                                .addComponent(lblReserveCheckOut)
+                                .addGap(126, 126, 126))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReservationLayout.createSequentialGroup()
+                                .addComponent(lblReserveCheckIn)
+                                .addGap(127, 127, 127)))))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReservationLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnReserve)
+                .addGap(18, 18, 18)
+                .addComponent(btnReserveCancel)
+                .addGap(169, 169, 169))
         );
         pnlReservationLayout.setVerticalGroup(
-                pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlReservationLayout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(lblTitle)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(pnlReservationLayout.createSequentialGroup()
-                                                .addComponent(lblGuestsName)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(pnlReservationLayout.createSequentialGroup()
-                                                .addComponent(lblContactNo)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtContactNo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(27, 27, 27)
-                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(pnlReservationLayout.createSequentialGroup()
-                                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addGroup(pnlReservationLayout.createSequentialGroup()
-                                                                .addComponent(lblRoomType)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(cmbRoomType, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(pnlReservationLayout.createSequentialGroup()
-                                                                .addComponent(lblNoOfGuests)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(txtNoOfGuests, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addGap(30, 30, 30)
-                                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(txtRoomNo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(lblSelectRoomNo)))
-                                        .addGroup(pnlReservationLayout.createSequentialGroup()
-                                                .addComponent(lblCheckIn)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(txtCINDate, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(txtCINTime, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(lblDate)
-                                                        .addComponent(lblCINTime))
-                                                .addGap(18, 18, 18)
-                                                .addComponent(lblCheckOut)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(txtCOUTDate, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(txtCOUTTime, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(lblCOUTDate)
-                                                        .addComponent(lblCOUTTime))))
-                                .addGap(37, 37, 37)
-                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnReserve)
-                                        .addComponent(btnCancel))
-                                .addGap(33, 33, 33))
+            pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlReservationLayout.createSequentialGroup()
+                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlReservationLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlReservationLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cmbReserveType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblReserveType))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblReserveName)
+                            .addComponent(txtReserveName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblReserveContact)
+                            .addComponent(txtReserveContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblReserveNo)
+                            .addComponent(txtReserveNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblReserveCIN)
+                            .addComponent(txtReserveCheckIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblReserveCheckIn)
+                        .addGap(21, 21, 21)
+                        .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtReserveCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblReserveCOUT))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblReserveCheckOut)))
+                .addGap(18, 18, 18)
+                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnReserve)
+                    .addComponent(btnReserveCancel))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
-        pnlContent.add(pnlReservation, "card2");
+        tabServices.addTab("Reservation", pnlReservation);
 
-        pnlCheckIn.setBackground(new java.awt.Color(102, 51, 0));
+        lblCheckInNo.setFont(new java.awt.Font("Bebas Neue", 0, 20)); // NOI18N
+        lblCheckInNo.setText("No. of Guests");
 
-        btnCheckIn.setBackground(new java.awt.Color(43, 24, 15));
+        lblCheckInName.setFont(new java.awt.Font("Bebas Neue", 0, 20)); // NOI18N
+        lblCheckInName.setText("Guest's Name");
+
+        txtCheckInNo.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+
+        txtCheckInName.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+
+        lblCheckInType.setFont(new java.awt.Font("Bebas Neue", 0, 20)); // NOI18N
+        lblCheckInType.setText("Room Type");
+
+        lblCheckInContact.setFont(new java.awt.Font("Bebas Neue", 0, 20)); // NOI18N
+        lblCheckInContact.setText("Contact Number");
+
+        cmbCheckInType.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+        cmbCheckInType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Single", "Double", "Deluxe Suite" }));
+
+        txtCheckInContact.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+
+        lblCheckInCIN1.setFont(new java.awt.Font("Bebas Neue", 0, 11)); // NOI18N
+        lblCheckInCIN1.setText("MM-DD-YYYY HH:MM");
+
+        lblCheckInCIN.setFont(new java.awt.Font("Bebas Neue", 0, 20)); // NOI18N
+        lblCheckInCIN.setText("Check-In");
+
+        txtCheckInCIN.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+
+        btnCheckInCancel.setBackground(new java.awt.Color(127, 183, 202));
+        btnCheckInCancel.setFont(new java.awt.Font("Bebas Neue", 0, 18)); // NOI18N
+        btnCheckInCancel.setForeground(new java.awt.Color(61, 62, 62));
+        btnCheckInCancel.setText("Cancel");
+        btnCheckInCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCheckInCancelActionPerformed(evt);
+            }
+        });
+
+        btnCheckIn.setBackground(new java.awt.Color(127, 183, 202));
         btnCheckIn.setFont(new java.awt.Font("Bebas Neue", 0, 18)); // NOI18N
-        btnCheckIn.setForeground(new java.awt.Color(251, 232, 189));
-        btnCheckIn.setText("CHECK-IN");
+        btnCheckIn.setForeground(new java.awt.Color(61, 62, 62));
+        btnCheckIn.setText("Check In");
         btnCheckIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCheckInActionPerformed(evt);
             }
         });
 
-        lblTitle1.setFont(new java.awt.Font("Benguiat", 0, 55)); // NOI18N
-        lblTitle1.setForeground(new java.awt.Color(244, 211, 142));
-        lblTitle1.setText("CHECK-IN");
-
-        lblGuestsName1.setFont(new java.awt.Font("Bebas Neue", 0, 21)); // NOI18N
-        lblGuestsName1.setForeground(new java.awt.Color(244, 211, 142));
-        lblGuestsName1.setText("Guest's Name");
-
-        txtName1.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
-
-        txtContactNo1.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
-
-        txtCINDate1.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
-
-        lblDate1.setFont(new java.awt.Font("Bebas Neue", 0, 14)); // NOI18N
-        lblDate1.setForeground(new java.awt.Color(244, 211, 142));
-        lblDate1.setText("Date");
-
-        txtCINTime1.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
-
-        lblCheckIn1.setFont(new java.awt.Font("Bebas Neue", 0, 21)); // NOI18N
-        lblCheckIn1.setForeground(new java.awt.Color(244, 211, 142));
-        lblCheckIn1.setText("Check IN");
-
-        lblCINTime1.setFont(new java.awt.Font("Bebas Neue", 0, 14)); // NOI18N
-        lblCINTime1.setForeground(new java.awt.Color(244, 211, 142));
-        lblCINTime1.setText("Time");
-
-        txtCOUTDate1.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
-
-        lblCOUTDate1.setFont(new java.awt.Font("Bebas Neue", 0, 14)); // NOI18N
-        lblCOUTDate1.setForeground(new java.awt.Color(244, 211, 142));
-        lblCOUTDate1.setText("Date");
-
-        txtCOUTTime1.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
-
-        lblCheckOut1.setFont(new java.awt.Font("Bebas Neue", 0, 21)); // NOI18N
-        lblCheckOut1.setForeground(new java.awt.Color(244, 211, 142));
-        lblCheckOut1.setText("Check Out");
-
-        lblCOUTTime1.setFont(new java.awt.Font("Bebas Neue", 0, 14)); // NOI18N
-        lblCOUTTime1.setForeground(new java.awt.Color(244, 211, 142));
-        lblCOUTTime1.setText("Time");
-
-        lblRoomType1.setFont(new java.awt.Font("Bebas Neue", 0, 21)); // NOI18N
-        lblRoomType1.setForeground(new java.awt.Color(244, 211, 142));
-        lblRoomType1.setText("rOOM TYPE");
-
-        cmbRoomType1.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
-        cmbRoomType1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Single", "Double", "Deluxe Suite" }));
-
-        btnCancel1.setBackground(new java.awt.Color(43, 24, 15));
-        btnCancel1.setFont(new java.awt.Font("Bebas Neue", 0, 18)); // NOI18N
-        btnCancel1.setForeground(new java.awt.Color(251, 232, 189));
-        btnCancel1.setText("Cancel");
-        btnCancel1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancel1ActionPerformed(evt);
-            }
-        });
-
-        lblNoOfGuests1.setFont(new java.awt.Font("Bebas Neue", 0, 21)); // NOI18N
-        lblNoOfGuests1.setForeground(new java.awt.Color(244, 211, 142));
-        lblNoOfGuests1.setText("NO. of GUests");
-
-        txtNoOfGuests1.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
-
-        lblContactNo1.setFont(new java.awt.Font("Bebas Neue", 0, 21)); // NOI18N
-        lblContactNo1.setForeground(new java.awt.Color(244, 211, 142));
-        lblContactNo1.setText("Contact Number");
-
-        txtRoomNo1.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
-
-        lblSelectRoomNo1.setFont(new java.awt.Font("Bebas Neue", 0, 21)); // NOI18N
-        lblSelectRoomNo1.setForeground(new java.awt.Color(244, 211, 142));
-        lblSelectRoomNo1.setText("Select Room Number");
-
         javax.swing.GroupLayout pnlCheckInLayout = new javax.swing.GroupLayout(pnlCheckIn);
         pnlCheckIn.setLayout(pnlCheckInLayout);
         pnlCheckInLayout.setHorizontalGroup(
-                pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(lblGuestsName1)
-                                                        .addComponent(txtName1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                                                .addComponent(lblTitle1)
-                                                                .addGap(0, 0, Short.MAX_VALUE))
-                                                        .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                                                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addComponent(lblCheckIn1)
-                                                                                .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                                                                        .addComponent(txtCINDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                        .addGap(18, 18, 18)
-                                                                                        .addComponent(txtCINTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                                        .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                                                                .addGap(49, 49, 49)
-                                                                                .addComponent(lblDate1)
-                                                                                .addGap(125, 125, 125)
-                                                                                .addComponent(lblCINTime1)
-                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addComponent(lblCheckOut1)
-                                                                                .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                                                                        .addComponent(txtCOUTDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                        .addGap(18, 18, 18)
-                                                                                        .addComponent(txtCOUTTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                                                                        .addGap(48, 48, 48)
-                                                                                        .addComponent(lblCOUTDate1)
-                                                                                        .addGap(125, 125, 125)
-                                                                                        .addComponent(lblCOUTTime1))))
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                                                                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                                        .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                                                                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                        .addComponent(lblRoomType1)
-                                                                                        .addComponent(cmbRoomType1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                        .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                                                                                .addGap(33, 33, 33)
-                                                                                                .addComponent(lblNoOfGuests1))
-                                                                                        .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                                                                                .addGap(18, 18, 18)
-                                                                                                .addComponent(txtNoOfGuests1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                                                        .addComponent(lblContactNo1)
-                                                                        .addComponent(txtContactNo1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                                                                .addComponent(lblSelectRoomNo1)
-                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                                .addComponent(txtRoomNo1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                                .addGap(72, 72, 72))))
-                        .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                .addGap(277, 277, 277)
-                                .addComponent(btnCheckIn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCancel1)
-                                .addGap(0, 0, Short.MAX_VALUE))
+            pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCheckInLayout.createSequentialGroup()
+                .addContainerGap(111, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 733, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(109, 109, 109))
+            .addGroup(pnlCheckInLayout.createSequentialGroup()
+                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlCheckInLayout.createSequentialGroup()
+                        .addGap(327, 327, 327)
+                        .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlCheckInLayout.createSequentialGroup()
+                                    .addComponent(lblCheckInNo)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtCheckInNo, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnlCheckInLayout.createSequentialGroup()
+                                    .addComponent(lblCheckInContact)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtCheckInContact, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnlCheckInLayout.createSequentialGroup()
+                                    .addComponent(lblCheckInName)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtCheckInName, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnlCheckInLayout.createSequentialGroup()
+                                    .addComponent(lblCheckInCIN)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtCheckInCIN, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(pnlCheckInLayout.createSequentialGroup()
+                                .addComponent(lblCheckInType)
+                                .addGap(59, 59, 59)
+                                .addComponent(cmbCheckInType, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCheckInLayout.createSequentialGroup()
+                                .addComponent(lblCheckInCIN1)
+                                .addGap(51, 51, 51))))
+                    .addGroup(pnlCheckInLayout.createSequentialGroup()
+                        .addGap(376, 376, 376)
+                        .addComponent(btnCheckIn)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCheckInCancel)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlCheckInLayout.setVerticalGroup(
-                pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(lblTitle1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                                .addComponent(lblGuestsName1)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtName1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                                .addComponent(lblContactNo1)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtContactNo1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(27, 27, 27)
-                                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                                                .addComponent(lblRoomType1)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(cmbRoomType1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                                                .addComponent(lblNoOfGuests1)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(txtNoOfGuests1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addGap(30, 30, 30)
-                                                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(txtRoomNo1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(lblSelectRoomNo1)))
-                                        .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                                .addComponent(lblCheckIn1)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(txtCINDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(txtCINTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(lblDate1)
-                                                        .addComponent(lblCINTime1))
-                                                .addGap(18, 18, 18)
-                                                .addComponent(lblCheckOut1)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(txtCOUTDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(txtCOUTTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(lblCOUTDate1)
-                                                        .addComponent(lblCOUTTime1))))
-                                .addGap(38, 38, 38)
-                                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnCheckIn)
-                                        .addComponent(btnCancel1))
-                                .addGap(32, 32, 32))
+            pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCheckInLayout.createSequentialGroup()
+                .addContainerGap(50, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblCheckInType)
+                    .addComponent(cmbCheckInType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCheckInName)
+                    .addComponent(txtCheckInName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCheckInContact)
+                    .addComponent(txtCheckInContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCheckInNo)
+                    .addComponent(txtCheckInNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCheckInCIN)
+                    .addComponent(txtCheckInCIN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblCheckInCIN1)
+                .addGap(36, 36, 36)
+                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCheckIn)
+                    .addComponent(btnCheckInCancel))
+                .addGap(40, 40, 40))
         );
 
-        pnlContent.add(pnlCheckIn, "card2");
+        tabServices.addTab("Check-In", pnlCheckIn);
 
-        pnlCheckOut.setBackground(new java.awt.Color(102, 51, 0));
+        lblCheckOutName.setFont(new java.awt.Font("Bebas Neue", 0, 20)); // NOI18N
+        lblCheckOutName.setText("Guest's Name");
 
-        btnCheckOut.setBackground(new java.awt.Color(43, 24, 15));
+        txtCheckOutName.setEditable(false);
+        txtCheckOutName.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+
+        btnCheckOut.setBackground(new java.awt.Color(127, 183, 202));
         btnCheckOut.setFont(new java.awt.Font("Bebas Neue", 0, 18)); // NOI18N
-        btnCheckOut.setForeground(new java.awt.Color(251, 232, 189));
-        btnCheckOut.setText("CHECK-out");
+        btnCheckOut.setForeground(new java.awt.Color(61, 62, 62));
+        btnCheckOut.setText("Check Out");
         btnCheckOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCheckOutActionPerformed(evt);
             }
         });
 
-        lblTitle3.setFont(new java.awt.Font("Benguiat", 0, 55)); // NOI18N
-        lblTitle3.setForeground(new java.awt.Color(244, 211, 142));
-        lblTitle3.setText("CHECK-OUT");
+        lblCheckOutRoomNo.setFont(new java.awt.Font("Bebas Neue", 0, 20)); // NOI18N
+        lblCheckOutRoomNo.setText("Room No. ");
 
-        lblGuestsName3.setFont(new java.awt.Font("Bebas Neue", 0, 21)); // NOI18N
-        lblGuestsName3.setForeground(new java.awt.Color(244, 211, 142));
-        lblGuestsName3.setText("Guest's Name");
+        txtCheckOutRoomNo.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
 
-        txtName3.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
+        lblCheckOutType.setFont(new java.awt.Font("Bebas Neue", 0, 20)); // NOI18N
+        lblCheckOutType.setText("Room type");
 
-        btnCancel3.setBackground(new java.awt.Color(43, 24, 15));
-        btnCancel3.setFont(new java.awt.Font("Bebas Neue", 0, 18)); // NOI18N
-        btnCancel3.setForeground(new java.awt.Color(251, 232, 189));
-        btnCancel3.setText("Cancel");
-        btnCancel3.addActionListener(new java.awt.event.ActionListener() {
+        txtCheckOutType.setEditable(false);
+        txtCheckOutType.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+
+        lblCheckOutFee.setFont(new java.awt.Font("Bebas Neue", 0, 20)); // NOI18N
+        lblCheckOutFee.setText("Fee");
+
+        txtCheckOutFee.setEditable(false);
+        txtCheckOutFee.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+
+        txtCheckOutCOUT.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+
+        lblCheckOutCOUT.setFont(new java.awt.Font("Bebas Neue", 0, 20)); // NOI18N
+        lblCheckOutCOUT.setText("Check-out");
+
+        lblCheckOutDate.setFont(new java.awt.Font("Bebas Neue", 0, 11)); // NOI18N
+        lblCheckOutDate.setText("MM-DD-YYYY HH:MM");
+        lblCheckOutDate.setToolTipText("");
+
+        txtCheckOutNo.setEditable(false);
+        txtCheckOutNo.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+
+        lblCheckOutNo.setFont(new java.awt.Font("Bebas Neue", 0, 20)); // NOI18N
+        lblCheckOutNo.setText("No. of Hours Stayed");
+
+        txtCheckOutTotal.setEditable(false);
+        txtCheckOutTotal.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+        txtCheckOutTotal.setText("PhP 0.00");
+
+        lblCheckOutTotal.setFont(new java.awt.Font("Bebas Neue", 0, 20)); // NOI18N
+        lblCheckOutTotal.setText("Total Bill");
+
+        btnClear.setBackground(new java.awt.Color(127, 183, 202));
+        btnClear.setFont(new java.awt.Font("Bebas Neue", 0, 18)); // NOI18N
+        btnClear.setForeground(new java.awt.Color(61, 62, 62));
+        btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancel3ActionPerformed(evt);
-            }
-        });
-
-        txtRoomNo3.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
-
-        lblSelectRoomNo3.setFont(new java.awt.Font("Bebas Neue", 0, 21)); // NOI18N
-        lblSelectRoomNo3.setForeground(new java.awt.Color(244, 211, 142));
-        lblSelectRoomNo3.setText("room Number");
-
-        lblRoomType2.setFont(new java.awt.Font("Bebas Neue", 0, 21)); // NOI18N
-        lblRoomType2.setForeground(new java.awt.Color(244, 211, 142));
-        lblRoomType2.setText("Room Type");
-
-        txtRoomType2.setEditable(false);
-        txtRoomType2.setBackground(new java.awt.Color(102, 51, 0));
-        txtRoomType2.setFont(new java.awt.Font("Baskerville Old Face", 0, 18)); // NOI18N
-        txtRoomType2.setForeground(new java.awt.Color(244, 211, 142));
-        txtRoomType2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtRoomType2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRoomType2ActionPerformed(evt);
-            }
-        });
-
-        lblHours.setFont(new java.awt.Font("Bebas Neue", 0, 21)); // NOI18N
-        lblHours.setForeground(new java.awt.Color(244, 211, 142));
-        lblHours.setText("no. of hours stayed");
-
-        txtRoomType3.setEditable(false);
-        txtRoomType3.setBackground(new java.awt.Color(102, 51, 0));
-        txtRoomType3.setFont(new java.awt.Font("Baskerville Old Face", 0, 18)); // NOI18N
-        txtRoomType3.setForeground(new java.awt.Color(244, 211, 142));
-        txtRoomType3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtRoomType3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRoomType3ActionPerformed(evt);
-            }
-        });
-
-        lblFee.setFont(new java.awt.Font("Bebas Neue", 0, 21)); // NOI18N
-        lblFee.setForeground(new java.awt.Color(244, 211, 142));
-        lblFee.setText("fee");
-
-        txtFee.setEditable(false);
-        txtFee.setBackground(new java.awt.Color(102, 51, 0));
-        txtFee.setFont(new java.awt.Font("Baskerville Old Face", 0, 18)); // NOI18N
-        txtFee.setForeground(new java.awt.Color(244, 211, 142));
-        txtFee.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtFee.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFeeActionPerformed(evt);
-            }
-        });
-
-        lblTotalBill.setFont(new java.awt.Font("Bebas Neue", 0, 21)); // NOI18N
-        lblTotalBill.setForeground(new java.awt.Color(244, 211, 142));
-        lblTotalBill.setText("Total Bill:");
-
-        txtTotalBill.setEditable(false);
-        txtTotalBill.setBackground(new java.awt.Color(102, 51, 0));
-        txtTotalBill.setFont(new java.awt.Font("Baskerville Old Face", 0, 24)); // NOI18N
-        txtTotalBill.setForeground(new java.awt.Color(244, 211, 142));
-        txtTotalBill.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtTotalBill.setText("PhP 0.00");
-        txtTotalBill.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTotalBillActionPerformed(evt);
+                btnClearActionPerformed(evt);
             }
         });
 
         javax.swing.GroupLayout pnlCheckOutLayout = new javax.swing.GroupLayout(pnlCheckOut);
         pnlCheckOut.setLayout(pnlCheckOutLayout);
         pnlCheckOutLayout.setHorizontalGroup(
-                pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlCheckOutLayout.createSequentialGroup()
+            pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCheckOutLayout.createSequentialGroup()
+                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlCheckOutLayout.createSequentialGroup()
+                        .addGap(199, 199, 199)
+                        .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlCheckOutLayout.createSequentialGroup()
+                                .addGap(98, 98, 98)
                                 .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(pnlCheckOutLayout.createSequentialGroup()
-                                                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(pnlCheckOutLayout.createSequentialGroup()
-                                                                .addGap(91, 91, 91)
-                                                                .addComponent(txtRoomType2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(pnlCheckOutLayout.createSequentialGroup()
-                                                                .addGap(115, 115, 115)
-                                                                .addComponent(lblRoomType2)))
-                                                .addGap(98, 98, 98)
-                                                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(pnlCheckOutLayout.createSequentialGroup()
-                                                                .addComponent(lblHours)
-                                                                .addGap(128, 128, 128)
-                                                                .addComponent(lblFee))
-                                                        .addGroup(pnlCheckOutLayout.createSequentialGroup()
-                                                                .addGap(10, 10, 10)
-                                                                .addComponent(txtRoomType3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
-                                                                .addComponent(txtFee, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                        .addGroup(pnlCheckOutLayout.createSequentialGroup()
-                                                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(pnlCheckOutLayout.createSequentialGroup()
-                                                                .addGap(42, 42, 42)
-                                                                .addComponent(lblTitle3))
-                                                        .addGroup(pnlCheckOutLayout.createSequentialGroup()
-                                                                .addGap(274, 274, 274)
-                                                                .addComponent(btnCheckOut)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(btnCancel3)))
-                                                .addGap(0, 0, Short.MAX_VALUE)))
-                                .addGap(93, 93, 93))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCheckOutLayout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblCheckOutName)
+                                    .addComponent(lblCheckOutType)
+                                    .addComponent(lblCheckOutFee)
+                                    .addComponent(lblCheckOutNo)
+                                    .addComponent(lblCheckOutTotal))
+                                .addGap(41, 41, 41)
                                 .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblGuestsName3)
-                                        .addComponent(lblSelectRoomNo3))
-                                .addGap(69, 69, 69)
-                                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtRoomNo3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtName3, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(219, 219, 219))
-                        .addGroup(pnlCheckOutLayout.createSequentialGroup()
-                                .addGap(186, 186, 186)
-                                .addComponent(lblTotalBill)
+                                    .addComponent(txtCheckOutTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCheckOutNo, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCheckOutFee, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCheckOutType, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCheckOutName, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(pnlCheckOutLayout.createSequentialGroup()
+                                .addComponent(lblCheckOutRoomNo)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtTotalBill, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txtCheckOutRoomNo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(45, 45, 45)
+                                .addComponent(lblCheckOutCOUT)
+                                .addGap(36, 36, 36)
+                                .addComponent(txtCheckOutCOUT, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlCheckOutLayout.createSequentialGroup()
+                                .addGap(176, 176, 176)
+                                .addComponent(btnCheckOut)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnClear))))
+                    .addGroup(pnlCheckOutLayout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 786, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(85, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCheckOutLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblCheckOutDate)
+                .addGap(290, 290, 290))
         );
         pnlCheckOutLayout.setVerticalGroup(
-                pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlCheckOutLayout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(lblTitle3)
-                                .addGap(21, 21, 21)
-                                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblSelectRoomNo3)
-                                        .addComponent(txtRoomNo3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtName3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblGuestsName3, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(pnlCheckOutLayout.createSequentialGroup()
-                                                .addGap(44, 44, 44)
-                                                .addComponent(lblFee)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(txtFee, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(pnlCheckOutLayout.createSequentialGroup()
-                                                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(pnlCheckOutLayout.createSequentialGroup()
-                                                                .addGap(44, 44, 44)
-                                                                .addComponent(lblRoomType2))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCheckOutLayout.createSequentialGroup()
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(lblHours)))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(txtRoomType2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(txtRoomType3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(30, 30, 30)
-                                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lblTotalBill)
-                                        .addComponent(txtTotalBill, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnCheckOut)
-                                        .addComponent(btnCancel3))
-                                .addGap(31, 31, 31))
+            pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCheckOutLayout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCheckOutRoomNo)
+                    .addComponent(lblCheckOutCOUT)
+                    .addComponent(txtCheckOutCOUT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCheckOutRoomNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblCheckOutDate)
+                .addGap(26, 26, 26)
+                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCheckOutName)
+                    .addComponent(txtCheckOutName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCheckOutType)
+                    .addComponent(txtCheckOutType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCheckOutFee)
+                    .addComponent(txtCheckOutFee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCheckOutNo)
+                    .addComponent(txtCheckOutNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCheckOutTotal)
+                    .addComponent(txtCheckOutTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCheckOut)
+                    .addComponent(btnClear))
+                .addGap(33, 33, 33))
         );
 
-        pnlContent.add(pnlCheckOut, "card2");
+        tabServices.addTab("Check-Out", pnlCheckOut);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addComponent(pnlTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(pnlTransparent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(pnlContent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        tableGuestsProfile.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"1", "101", null, null, null, null, null, null, "Available"},
+                {"2", "102", null, null, null, null, null, null, "Available"},
+                {"3", "103", null, null, null, null, null, null, "Available"},
+                {"4", "104", null, null, null, null, null, null, "Available"},
+                {"5", "105", null, null, null, null, null, null, "Available"},
+                {"6", "106", null, null, null, null, null, null, "Available"},
+                {"7", "107", null, null, null, null, null, null, "Available"},
+                {"8", "108", null, null, null, null, null, null, "Available"},
+                {"9", "109", null, null, null, null, null, null, "Available"},
+                {"10", "110", null, null, null, null, null, null, "Available"},
+                {"11", "201", null, null, null, null, null, null, "Available"},
+                {"12", "202", null, null, null, null, null, null, "Available"},
+                {"13", "203", null, null, null, null, null, null, "Available"},
+                {"14", "204", null, null, null, null, null, null, "Available"},
+                {"15", "205", null, null, null, null, null, null, "Available"},
+                {"16", "206", null, null, null, null, null, null, "Available"},
+                {"17", "207", null, null, null, null, null, null, "Available"},
+                {"18", "208", null, null, null, null, null, null, "Available"},
+                {"19", "209", null, null, null, null, null, null, "Available"},
+                {"20", "210", null, null, null, null, null, null, "Available"},
+                {"21", "301", null, null, null, null, null, null, "Available"},
+                {"22", "302", null, null, null, null, null, null, "Available"},
+                {"23", "303", null, null, null, null, null, null, "Available"},
+                {"24", "304", null, null, null, null, null, null, "Available"},
+                {"25", "305", null, null, null, null, null, null, "Available"},
+                {"26", "306", null, null, null, null, null, null, "Available"},
+                {"27", "307", null, null, null, null, null, null, "Available"},
+                {"28", "308", null, null, null, null, null, null, "Available"},
+                {"29", "309", null, null, null, null, null, null, "Available"},
+                {"30", "310", null, null, null, null, null, null, "Available"}
+            },
+            new String [] {
+                "#", "Room No.", "Room Type", "Guest's Name", "Contact No.", "No. of Guests", "Check-In", "Check-Out", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableGuestsProfile.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tableGuestsProfile.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(tableGuestsProfile);
+        if (tableGuestsProfile.getColumnModel().getColumnCount() > 0) {
+            tableGuestsProfile.getColumnModel().getColumn(0).setResizable(false);
+            tableGuestsProfile.getColumnModel().getColumn(1).setResizable(false);
+            tableGuestsProfile.getColumnModel().getColumn(2).setResizable(false);
+            tableGuestsProfile.getColumnModel().getColumn(3).setResizable(false);
+            tableGuestsProfile.getColumnModel().getColumn(4).setResizable(false);
+            tableGuestsProfile.getColumnModel().getColumn(5).setResizable(false);
+            tableGuestsProfile.getColumnModel().getColumn(6).setResizable(false);
+            tableGuestsProfile.getColumnModel().getColumn(7).setResizable(false);
+            tableGuestsProfile.getColumnModel().getColumn(8).setResizable(false);
+        }
+
+        btnSearch.setBackground(new java.awt.Color(127, 183, 202));
+        btnSearch.setFont(new java.awt.Font("Bebas Neue", 0, 18)); // NOI18N
+        btnSearch.setForeground(new java.awt.Color(61, 62, 62));
+        btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+
+        txtSearch.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+
+        btnRoomsClear.setBackground(new java.awt.Color(127, 183, 202));
+        btnRoomsClear.setFont(new java.awt.Font("Bebas Neue", 0, 18)); // NOI18N
+        btnRoomsClear.setForeground(new java.awt.Color(61, 62, 62));
+        btnRoomsClear.setText("Clear");
+        btnRoomsClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRoomsClearActionPerformed(evt);
+            }
+        });
+
+        cmbStatus.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Available", "Booked" }));
+        cmbStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbStatusActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlRoomsProfileLayout = new javax.swing.GroupLayout(pnlRoomsProfile);
+        pnlRoomsProfile.setLayout(pnlRoomsProfileLayout);
+        pnlRoomsProfileLayout.setHorizontalGroup(
+            pnlRoomsProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRoomsProfileLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 860, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRoomsProfileLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSearch)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnRoomsClear)
+                .addGap(235, 235, 235))
         );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addComponent(pnlTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(17, 17, 17)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(pnlTransparent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(pnlContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        pnlRoomsProfileLayout.setVerticalGroup(
+            pnlRoomsProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRoomsProfileLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(pnlRoomsProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlRoomsProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnSearch)
+                        .addComponent(btnRoomsClear)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                .addContainerGap())
         );
+
+        tabServices.addTab("Rooms/Profile", pnlRoomsProfile);
+
+        pnlBody.add(pnlRoomTab, "card2");
+
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tabReservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabReservationActionPerformed
-        // TODO add your handling code here:
-        pnlContent.removeAll();
-        pnlContent.add(pnlReservation);
-        pnlContent.repaint();
-        pnlContent.revalidate();
-    }//GEN-LAST:event_tabReservationActionPerformed
-
-    private void tabCheckInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabCheckInActionPerformed
-        // TODO add your handling code here:
-        pnlContent.removeAll();
-        pnlContent.add(pnlCheckIn);
-        pnlContent.repaint();
-        pnlContent.revalidate();
-    }//GEN-LAST:event_tabCheckInActionPerformed
-
-    private void tabCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabCheckOutActionPerformed
-        // TODO add your handling code here:
-        pnlContent.removeAll();
-        pnlContent.add(pnlCheckOut);
-        pnlContent.repaint();
-        pnlContent.revalidate();
-    }//GEN-LAST:event_tabCheckOutActionPerformed
-
-    private void tabGuestsProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabGuestsProfileActionPerformed
-        // TODO add your handling code here:
-        pnlContent.removeAll();
-        pnlContent.add(pnlGuestsProfile);
-        pnlContent.repaint();
-        pnlContent.revalidate();
-    }//GEN-LAST:event_tabGuestsProfileActionPerformed
-
-    private void tabRoomMngtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabRoomMngtActionPerformed
-        // TODO add your handling code here:
-        pnlContent.removeAll();
-        pnlContent.add(pnlRoomMngt);
-        pnlContent.repaint();
-        pnlContent.revalidate();
-    }//GEN-LAST:event_tabRoomMngtActionPerformed
-
-    private void tabRevenueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabRevenueActionPerformed
-        // TODO add your handling code here:
-        pnlContent.removeAll();
-        pnlContent.add(pnlRevenue);
-        pnlContent.repaint();
-        pnlContent.revalidate();
-    }//GEN-LAST:event_tabRevenueActionPerformed
-
     private void btnReserveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReserveActionPerformed
         // TODO add your handling code here:
+        Reserve();
     }//GEN-LAST:event_btnReserveActionPerformed
-
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelActionPerformed
-
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
 
     private void btnCheckInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckInActionPerformed
         // TODO add your handling code here:
+        CheckIn();
     }//GEN-LAST:event_btnCheckInActionPerformed
 
-    private void txtName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtName1ActionPerformed
+    private void btnReserveCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReserveCancelActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtName1ActionPerformed
+        CancelReserve();
+    }//GEN-LAST:event_btnReserveCancelActionPerformed
 
-    private void btnCancel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancel1ActionPerformed
+    private void btnCheckInCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckInCancelActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancel1ActionPerformed
+        cmbCheckInType.setSelectedItem(" ");
+        txtCheckInName.setText("");
+        txtCheckInContact.setText("");
+        txtCheckInNo.setText("");
+        txtCheckInCIN.setText(null);
+    }//GEN-LAST:event_btnCheckInCancelActionPerformed
 
-    private void btnCheckIn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckIn1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCheckIn1ActionPerformed
+    private void btnCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckOutActionPerformed
+        try {
+            CheckOut();
+        } catch (ParseException ex) {
+            Logger.getLogger(NewProposal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnCheckOutActionPerformed
 
-    private void txtName2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtName2ActionPerformed
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtName2ActionPerformed
+        Clear();
+    }//GEN-LAST:event_btnClearActionPerformed
 
-    private void btnCancel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancel2ActionPerformed
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancel2ActionPerformed
+        Search();
+    }//GEN-LAST:event_btnSearchActionPerformed
 
-    private void btnCheckIn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckIn2ActionPerformed
+    private void btnRoomsClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRoomsClearActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCheckIn2ActionPerformed
+        String[] checkin = {null, null, cmbCheckInType.getSelectedItem().toString(), txtCheckInName.getText(), txtCheckInCIN.getText(), txtCheckOutCOUT.getText(), null};
+        DefaultTableModel checkinModel = (DefaultTableModel)tableGuestsProfile.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel> (checkinModel);
+        tableGuestsProfile.setRowSorter(tr);
+        txtSearch.setText("");
+    }//GEN-LAST:event_btnRoomsClearActionPerformed
 
-    private void btnSearch2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearch2ActionPerformed
+    private void cmbStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbStatusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSearch2ActionPerformed
+        String[] checkin = {null, null, cmbCheckInType.getSelectedItem().toString(), txtCheckInName.getText(), txtCheckInCIN.getText(), txtCheckOutCOUT.getText(), null};
+        DefaultTableModel checkinModel = (DefaultTableModel)tableGuestsProfile.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel> (checkinModel);
+        tableGuestsProfile.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(cmbStatus.getSelectedItem().toString()));
+    }//GEN-LAST:event_cmbStatusActionPerformed
+
+    private void btnRevenueSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRevenueSearchActionPerformed
+        // TODO add your handling code here:
+        RevenueSearch();
+    }//GEN-LAST:event_btnRevenueSearchActionPerformed
+
+    private void btnRevenueClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRevenueClearActionPerformed
+        // TODO add your handling code here:
+        txtRevenueSearch.setText("");
+        RevenueSearch();
+        txtRevenue.setText("PhP " + 0.00);
+    }//GEN-LAST:event_btnRevenueClearActionPerformed
+
+    private void pnltabHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnltabHomeMouseClicked
+        // TODO add your handling code here:
+        pnlBody.removeAll();
+        pnlBody.add(pnlHomeTab);
+        pnlBody.repaint();
+        pnlBody.revalidate();
+    }//GEN-LAST:event_pnltabHomeMouseClicked
+
+    private void lblRoomsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRoomsMouseClicked
+        // TODO add your handling code here:
+        pnlBody.removeAll();
+        pnlBody.add(pnlRoomTab);
+        pnlBody.repaint();
+        pnlBody.revalidate();
+    }//GEN-LAST:event_lblRoomsMouseClicked
+
+    private void lblAmenitiesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAmenitiesMouseClicked
+        // TODO add your handling code here:
+        pnlBody.removeAll();
+        pnlBody.add(pnlAmenities);
+        pnlBody.repaint();
+        pnlBody.revalidate();
+    }//GEN-LAST:event_lblAmenitiesMouseClicked
+
+    private void lblDestinationsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDestinationsMouseClicked
+        // TODO add your handling code here:
+        pnlBody.removeAll();
+        pnlBody.add(pnlDestinations);
+        pnlBody.repaint();
+        pnlBody.revalidate();
+    }//GEN-LAST:event_lblDestinationsMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1066,140 +1108,196 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HotelManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewProposal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HotelManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewProposal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HotelManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewProposal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HotelManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewProposal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HotelManagement().setVisible(true);
+                new NewProposal().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancel;
-    private javax.swing.JButton btnCancel1;
-    private javax.swing.JButton btnCancel2;
     private javax.swing.JButton btnCheckIn;
-    private javax.swing.JButton btnCheckIn1;
-    private javax.swing.JButton btnCheckIn2;
+    private javax.swing.JButton btnCheckInCancel;
+    private javax.swing.JButton btnCheckOut;
+    private javax.swing.JButton btnClear;
     private javax.swing.JButton btnReserve;
-    private javax.swing.JButton btnSearch2;
-    private javax.swing.JComboBox<String> cmbRoomType;
-    private javax.swing.JComboBox<String> cmbRoomType1;
-    private javax.swing.JComboBox<String> cmbRoomType2;
+    private javax.swing.JButton btnReserveCancel;
+    private javax.swing.JButton btnRevenueClear;
+    private javax.swing.JButton btnRevenueSearch;
+    private javax.swing.JButton btnRoomsClear;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JComboBox<String> cmbCheckInType;
+    private javax.swing.JComboBox<String> cmbReserveType;
+    private javax.swing.JComboBox<String> cmbStatus;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
+    private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JLabel lblAmDining;
+    private javax.swing.JLabel lblAmGym;
+    private javax.swing.JLabel lblAmSpa;
+    private javax.swing.JLabel lblAmSwimmingPool;
     private javax.swing.JLabel lblAmenities;
-    private javax.swing.JLabel lblCINTime;
-    private javax.swing.JLabel lblCINTime1;
-    private javax.swing.JLabel lblCOUTDate;
-    private javax.swing.JLabel lblCOUTDate1;
-    private javax.swing.JLabel lblCOUTTime;
-    private javax.swing.JLabel lblCOUTTime1;
-    private javax.swing.JLabel lblCheckIn;
-    private javax.swing.JLabel lblCheckIn1;
-    private javax.swing.JLabel lblCheckIn3;
-    private javax.swing.JLabel lblCheckOut;
-    private javax.swing.JLabel lblCheckOut1;
-    private javax.swing.JLabel lblCheckOut3;
-    private javax.swing.JLabel lblCheckOut4;
-    private javax.swing.JLabel lblContactNo;
-    private javax.swing.JLabel lblContactNo1;
-    private javax.swing.JLabel lblDate;
-    private javax.swing.JLabel lblDate1;
-    private javax.swing.JLabel lblDate2;
+    private javax.swing.JLabel lblCheckInCIN;
+    private javax.swing.JLabel lblCheckInCIN1;
+    private javax.swing.JLabel lblCheckInContact;
+    private javax.swing.JLabel lblCheckInContact1;
+    private javax.swing.JLabel lblCheckInName;
+    private javax.swing.JLabel lblCheckInNo;
+    private javax.swing.JLabel lblCheckInType;
+    private javax.swing.JLabel lblCheckOutCOUT;
+    private javax.swing.JLabel lblCheckOutDate;
+    private javax.swing.JLabel lblCheckOutFee;
+    private javax.swing.JLabel lblCheckOutName;
+    private javax.swing.JLabel lblCheckOutNo;
+    private javax.swing.JLabel lblCheckOutRoomNo;
+    private javax.swing.JLabel lblCheckOutTotal;
+    private javax.swing.JLabel lblCheckOutType;
+    private javax.swing.JLabel lblDeluxe;
     private javax.swing.JLabel lblDestinations;
-    private javax.swing.JLabel lblGuestsName;
-    private javax.swing.JLabel lblGuestsName1;
-    private javax.swing.JLabel lblGuestsName2;
-    private javax.swing.JLabel lblGuestsName3;
+    private javax.swing.JLabel lblDining;
+    private javax.swing.JLabel lblDouble;
+    private javax.swing.JLabel lblGym;
     private javax.swing.JLabel lblHome;
     private javax.swing.JLabel lblHotelName;
-    private javax.swing.JLabel lblInputCheckIn;
-    private javax.swing.JLabel lblInputCheckOut;
-    private javax.swing.JLabel lblInputCheckOut1;
-    private javax.swing.JLabel lblInputName;
-    private javax.swing.JLabel lblInputName1;
-    private javax.swing.JLabel lblNoOfGuests;
-    private javax.swing.JLabel lblNoOfGuests1;
-    private javax.swing.JLabel lblNoOfGuests2;
-    private javax.swing.JLabel lblNoOfHours;
-    private javax.swing.JLabel lblNoOfHours1;
-    private javax.swing.JLabel lblNoOfHours2;
-    private javax.swing.JLabel lblRoomType;
-    private javax.swing.JLabel lblRoomType1;
-    private javax.swing.JLabel lblRoomType2;
-    private javax.swing.JLabel lblRoomType3;
+    private javax.swing.JLabel lblMalls;
+    private javax.swing.JLabel lblMalls1;
+    private javax.swing.JLabel lblMalls2;
+    private javax.swing.JLabel lblReserveCIN;
+    private javax.swing.JLabel lblReserveCOUT;
+    private javax.swing.JLabel lblReserveCheckIn;
+    private javax.swing.JLabel lblReserveCheckOut;
+    private javax.swing.JLabel lblReserveContact;
+    private javax.swing.JLabel lblReserveName;
+    private javax.swing.JLabel lblReserveNo;
+    private javax.swing.JLabel lblReserveType;
+    private javax.swing.JLabel lblRevenue;
     private javax.swing.JLabel lblRooms;
-    private javax.swing.JLabel lblSelectRoomNo;
-    private javax.swing.JLabel lblSelectRoomNo1;
-    private javax.swing.JLabel lblSelectRoomNo2;
-    private javax.swing.JLabel lblSelectRoomNo3;
-    private javax.swing.JLabel lblTitle;
-    private javax.swing.JLabel lblTitle1;
-    private javax.swing.JLabel lblTitle2;
-    private javax.swing.JLabel lblTitle3;
-    private javax.swing.JLabel lblTitle4;
-    private javax.swing.JLabel lblTitle5;
-    private javax.swing.JLabel lblTotalRevenue;
+    private javax.swing.JLabel lblRoomsDeluxeSuite;
+    private javax.swing.JLabel lblRoomsDouble;
+    private javax.swing.JLabel lblRoomsSingle;
+    private javax.swing.JLabel lblServices;
+    private javax.swing.JLabel lblServices1;
+    private javax.swing.JLabel lblServices2;
+    private javax.swing.JLabel lblServices3;
+    private javax.swing.JLabel lblSingle;
+    private javax.swing.JLabel lblSpa;
+    private javax.swing.JLabel lblSwimmingPool;
+    private javax.swing.JPanel pnlAmenities;
     private javax.swing.JPanel pnlBody;
     private javax.swing.JPanel pnlCheckIn;
     private javax.swing.JPanel pnlCheckOut;
-    private javax.swing.JPanel pnlContent;
-    private javax.swing.JPanel pnlGuestsProfile;
+    private javax.swing.JPanel pnlDestinations;
     private javax.swing.JPanel pnlHomeTab;
     private javax.swing.JPanel pnlReservation;
-    private javax.swing.JPanel pnlRevenue;
-    private javax.swing.JPanel pnlRoomMngt;
+    private javax.swing.JPanel pnlRevenueSearch;
+    private javax.swing.JPanel pnlRoomTab;
+    private javax.swing.JPanel pnlRoomsProfile;
     private javax.swing.JPanel pnlTop;
-    private javax.swing.JPanel pnlTransparent;
     private javax.swing.JPanel pnltabHome;
-    private javax.swing.JButton tabCheckIn;
-    private javax.swing.JButton tabCheckOut;
-    private javax.swing.JButton tabGuestsProfile;
-    private javax.swing.JButton tabReservation;
-    private javax.swing.JButton tabRevenue;
-    private javax.swing.JButton tabRoomMngt;
-    private javax.swing.JLabel tabServices;
-    private javax.swing.JTable tableGuestsInfo;
+    private javax.swing.JTabbedPane tabServices;
+    private javax.swing.JTable tableGuestsProfile;
+    private javax.swing.JTable tableReserve;
     private javax.swing.JTable tableRevenue;
-    private javax.swing.JTextField txtCINDate;
-    private javax.swing.JTextField txtCINDate1;
-    private javax.swing.JTextField txtCINTime;
-    private javax.swing.JTextField txtCINTime1;
-    private javax.swing.JTextField txtCOUTDate;
-    private javax.swing.JTextField txtCOUTDate1;
-    private javax.swing.JTextField txtCOUTTime;
-    private javax.swing.JTextField txtCOUTTime1;
-    private javax.swing.JTextField txtContactNo;
-    private javax.swing.JTextField txtContactNo1;
-    private javax.swing.JTextField txtDate;
-    private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtName1;
-    private javax.swing.JTextField txtName2;
-    private javax.swing.JTextField txtNoOfGuests;
-    private javax.swing.JTextField txtNoOfGuests1;
-    private javax.swing.JTextField txtNoOfHours;
-    private javax.swing.JTextField txtNoOfHours1;
-    private javax.swing.JTextField txtNoOfHours2;
+    private javax.swing.JTextField txtCheckInCIN;
+    private javax.swing.JTextField txtCheckInContact;
+    private javax.swing.JTextField txtCheckInName;
+    private javax.swing.JTextField txtCheckInNo;
+    private javax.swing.JTextField txtCheckOutCOUT;
+    private javax.swing.JTextField txtCheckOutFee;
+    private javax.swing.JTextField txtCheckOutName;
+    private javax.swing.JTextField txtCheckOutNo;
+    private javax.swing.JTextField txtCheckOutRoomNo;
+    private javax.swing.JTextField txtCheckOutTotal;
+    private javax.swing.JTextField txtCheckOutType;
+    private javax.swing.JTextField txtReserveCheckIn;
+    private javax.swing.JTextField txtReserveCheckOut;
+    private javax.swing.JTextField txtReserveContact;
+    private javax.swing.JTextField txtReserveName;
+    private javax.swing.JTextField txtReserveNo;
     private javax.swing.JTextField txtRevenue;
-    private javax.swing.JTextField txtRoomNo;
-    private javax.swing.JTextField txtRoomNo1;
-    private javax.swing.JTextField txtRoomNo2;
-    private javax.swing.JTextField txtRoomNo3;
-    private javax.swing.JTextField txtRoomType;
+    private javax.swing.JTextField txtRevenueSearch;
+    private javax.swing.JTextField txtSearch;
+    private javax.swing.JTextArea txtareaDeluxeSuite;
+    private javax.swing.JTextArea txtareaDining;
+    private javax.swing.JTextArea txtareaDouble;
+    private javax.swing.JTextArea txtareaPool;
+    private javax.swing.JTextArea txtareaPool1;
+    private javax.swing.JTextArea txtareaPool2;
+    private javax.swing.JTextArea txtareaSingle;
     // End of variables declaration//GEN-END:variables
 }

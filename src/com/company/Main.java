@@ -54,10 +54,42 @@ public class Main extends javax.swing.JFrame {
     }
 
     public void Reserve () {
+        if (cmbReserveType.getSelectedItem().equals(" ") || txtReserveName.getText().equals("") || txtReserveContact.getText().equals("") || txtReserveNo.getText().equals("") || txtReserveCheckIn.getText().equals("") || txtReserveCheckOut.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please completely fill up the information!");
+        }
+        else {
+            String[] reserveinfo = {null, cmbReserveType.getSelectedItem().toString(), txtReserveName.getText(), txtReserveCheckIn.getText(), txtReserveCheckOut.getText()};
+            DefaultTableModel reserveModel = (DefaultTableModel)tableReserve.getModel();
+            int i = tableReserve.getSelectedRow();
+            if (i >= 0) {
+                reserveinfo[0] = tableReserve.getValueAt(i, 0).toString();
+                tableReserve.setValueAt(cmbReserveType.getSelectedItem().toString(),i, 1);
+                tableReserve.setValueAt(txtReserveName.getText(), i, 2);
+                tableReserve.setValueAt(txtReserveCheckIn.getText(), i, 3);
+                tableReserve.setValueAt(txtReserveCheckOut.getText(), i, 4);
+            }
+            JOptionPane.showMessageDialog(this, "Reserve successfully.");
+            cmbReserveType.setSelectedItem(" ");
+            txtReserveName.setText("");
+            txtReserveContact.setText("");
+            txtReserveNo.setText("");
+            txtReserveCheckIn.setText(null);
+            txtReserveCheckOut.setText(null);
+        }
     }
 
     public void CancelReserve() {
-
+        String[] reserveinfo = {null, cmbReserveType.getSelectedItem().toString(), txtReserveName.getText(), txtReserveCheckIn.getText(), txtReserveCheckOut.getText()};
+        DefaultTableModel reserveModel = (DefaultTableModel)tableReserve.getModel();
+        int i = tableReserve.getSelectedRow();
+        if (i >= 0) {
+            reserveinfo[0] = tableReserve.getValueAt(i, 0).toString();
+            tableReserve.setValueAt("", i, 1);
+            tableReserve.setValueAt("", i, 2);
+            tableReserve.setValueAt("", i, 3);
+            tableReserve.setValueAt("", i, 4);
+        }
+        JOptionPane.showMessageDialog(this, "Cancelled the reservation successfully.");
     }
 
     public void CheckIn() {

@@ -981,10 +981,152 @@ public class Main extends javax.swing.JFrame {
 
         tabServices.addTab("Rooms/Profile", pnlRoomsProfile);
 
-        pnlBody.add(pnlRoomTab, "card2");
+        btnRevenueSearch.setBackground(new java.awt.Color(127, 183, 202));
+        btnRevenueSearch.setFont(new java.awt.Font("Bebas Neue", 0, 18)); // NOI18N
+        btnRevenueSearch.setForeground(new java.awt.Color(61, 62, 62));
+        btnRevenueSearch.setText("Search");
+        btnRevenueSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRevenueSearchActionPerformed(evt);
+            }
+        });
+
+        tableRevenue.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Check-Out ", "Room No.", "Room Type", "Room Price", "No. of Hours Stayed", "Total"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableRevenue.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tableRevenue.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(tableRevenue);
+        if (tableRevenue.getColumnModel().getColumnCount() > 0) {
+            tableRevenue.getColumnModel().getColumn(0).setResizable(false);
+            tableRevenue.getColumnModel().getColumn(1).setResizable(false);
+            tableRevenue.getColumnModel().getColumn(2).setResizable(false);
+            tableRevenue.getColumnModel().getColumn(3).setResizable(false);
+            tableRevenue.getColumnModel().getColumn(4).setResizable(false);
+            tableRevenue.getColumnModel().getColumn(5).setResizable(false);
+        }
+
+        txtRevenueSearch.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+        txtRevenueSearch.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        lblCheckInContact1.setFont(new java.awt.Font("Bebas Neue", 0, 20)); // NOI18N
+        lblCheckInContact1.setText("Search");
+
+        txtRevenue.setEditable(false);
+        txtRevenue.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+        txtRevenue.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtRevenue.setText("PhP 0.00");
+
+        lblRevenue.setFont(new java.awt.Font("Bebas Neue", 0, 20)); // NOI18N
+        lblRevenue.setText("Total Revenue");
+
+        btnRevenueClear.setBackground(new java.awt.Color(127, 183, 202));
+        btnRevenueClear.setFont(new java.awt.Font("Bebas Neue", 0, 18)); // NOI18N
+        btnRevenueClear.setForeground(new java.awt.Color(61, 62, 62));
+        btnRevenueClear.setText("Clear");
+        btnRevenueClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRevenueClearActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlRevenueSearchLayout = new javax.swing.GroupLayout(pnlRevenueSearch);
+        pnlRevenueSearch.setLayout(pnlRevenueSearchLayout);
+        pnlRevenueSearchLayout.setHorizontalGroup(
+            pnlRevenueSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRevenueSearchLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(pnlRevenueSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblRevenue)
+                    .addComponent(txtRevenueSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCheckInContact1)
+                    .addComponent(txtRevenue, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlRevenueSearchLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(btnRevenueSearch)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRevenueClear)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 681, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        pnlRevenueSearchLayout.setVerticalGroup(
+            pnlRevenueSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRevenueSearchLayout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addComponent(lblCheckInContact1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtRevenueSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlRevenueSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRevenueSearch)
+                    .addComponent(btnRevenueClear))
+                .addGap(79, 79, 79)
+                .addComponent(lblRevenue)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtRevenue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(121, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRevenueSearchLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        tabServices.addTab("Revenue", pnlRevenueSearch);
+
+        javax.swing.GroupLayout pnlHomeTabLayout = new javax.swing.GroupLayout(pnlHomeTab);
+        pnlHomeTab.setLayout(pnlHomeTabLayout);
+        pnlHomeTabLayout.setHorizontalGroup(
+            pnlHomeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHomeTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlHomeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tabServices)
+                    .addGroup(pnlHomeTabLayout.createSequentialGroup()
+                        .addComponent(jSeparator4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblServices)
+                        .addGap(18, 18, 18)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 828, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        pnlHomeTabLayout.setVerticalGroup(
+            pnlHomeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHomeTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlHomeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlHomeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlHomeTabLayout.createSequentialGroup()
+                            .addComponent(lblServices)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHomeTabLayout.createSequentialGroup()
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(35, 35, 35)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHomeTabLayout.createSequentialGroup()
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)))
+                .addComponent(tabServices)
+                .addContainerGap())
+        );
+
+        tabServices.getAccessibleContext().setAccessibleDescription("");
+
+        pnlBody.add(pnlHomeTab, "card2");
 
 
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnReserveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReserveActionPerformed

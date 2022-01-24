@@ -97,11 +97,89 @@ public class Main extends javax.swing.JFrame {
     }
 
     public void CheckOut() throws ParseException {
-
+        if (txtCheckOutRoomNo.getText().equals("") || txtCheckOutCOUT.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please completely fill up the information!");
+        }
+        else {
+            String[] checkin = {null, null, cmbCheckInType.getSelectedItem().toString(), txtCheckInName.getText(), txtCheckInCIN.getText(), txtCheckOutCOUT.getText(), null};
+            DefaultTableModel checkinModel = (DefaultTableModel)tableGuestsProfile.getModel();
+            TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel> (checkinModel);
+            tableGuestsProfile.setRowSorter(tr);
+            tr.setRowFilter(RowFilter.regexFilter(txtCheckOutRoomNo.getText().trim()));
+            for (int i = 0; i < tableGuestsProfile.getRowCount(); i++) {
+                tableGuestsProfile.convertRowIndexToModel(i);
+                txtCheckOutName.setText(tableGuestsProfile.getModel().getValueAt(tableGuestsProfile.convertRowIndexToModel(i), 3).toString());
+                txtCheckOutType.setText(tableGuestsProfile.getModel().getValueAt(tableGuestsProfile.convertRowIndexToModel(i), 2).toString());
+                tableGuestsProfile.setValueAt(txtCheckOutCOUT.getText(), i, 7);
+                SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy HH:mm");
+                Date cinDate = format.parse(tableGuestsProfile.getValueAt(i, 6).toString());
+                Date coutDate = format.parse(tableGuestsProfile.getValueAt(i, 7).toString());
+                try {
+                    long diffMillies = coutDate.getTime() - cinDate.getTime();
+                    long diffDays = (diffMillies / (1000 * 60 * 60)) % 365;
+                    long diffHours = (diffMillies / (1000 * 60 * 60)) % 24;
+                    long diffMinutes = (diffMillies / (1000 * 60)) % 60;
+                    int countDays = 0;
+                    if (diffDays % 24 != 0) {
+                        countDays = (int) (diffDays / 24) + 1;
+                    }
+                    else {
+                        countDays = (int) (diffDays / 24);
+                    }
+                    System.out.println(String.valueOf(diffDays));
+                    System.out.println(String.valueOf(diffHours));
+                    System.out.println(String.valueOf(diffMinutes));
+                    double total = 0;
+                    if (tableGuestsProfile.getValueAt(i, 2).toString().equals("Single")) {
+                        total = countDays * 3999;
+                        txtCheckOutFee.setText("PhP 3,999");
+                        txtCheckOutNo.setText(String.valueOf(diffDays));
+                        txtCheckOutTotal.setText("PhP " + total);
+                    }
+                    else if (tableGuestsProfile.getValueAt(i, 2).toString().equals("Double")) {
+                        total = countDays * 5999;
+                        txtCheckOutFee.setText("PhP 5,999");
+                        txtCheckOutNo.setText(String.valueOf(diffDays));
+                        txtCheckOutTotal.setText("PhP " + total);
+                    }
+                    else if (tableGuestsProfile.getValueAt(i, 2).toString().equals("Deluxe Suite")) {
+                        total = countDays * 10999;
+                        txtCheckOutFee.setText("PhP 10,999");
+                        txtCheckOutNo.setText(String.valueOf(diffDays));
+                        txtCheckOutTotal.setText("PhP " + total);
+                    }
+                    String[] revenue = {tableGuestsProfile.getValueAt(i, 7).toString(), tableGuestsProfile.getValueAt(i, 1).toString(), tableGuestsProfile.getValueAt(i, 2).toString(), txtCheckOutFee.getText(), String.valueOf(diffDays), String.valueOf(total)};
+                    DefaultTableModel revenueModel = (DefaultTableModel)tableRevenue.getModel();
+                    revenueModel.addRow(revenue);
+                    tableGuestsProfile.setValueAt(" ", i, 2);
+                    tableGuestsProfile.setValueAt(" ", i, 3);
+                    tableGuestsProfile.setValueAt(" ", i, 4);
+                    tableGuestsProfile.setValueAt(" ", i, 5);
+                    tableGuestsProfile.setValueAt(" ", i, 6);
+                    tableGuestsProfile.setValueAt(" ", i, 7);
+                    tableGuestsProfile.setValueAt("Available", i, 8);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            JOptionPane.showMessageDialog(this, "Checked-out successfully!");
+        }
     }
 
     public void Clear() {
-
+        String[] checkin = {null, null, cmbCheckInType.getSelectedItem().toString(), txtCheckInName.getText(), txtCheckInCIN.getText(), txtCheckOutCOUT.getText(), null};
+        DefaultTableModel checkinModel = (DefaultTableModel)tableGuestsProfile.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel> (checkinModel);
+        tableGuestsProfile.setRowSorter(tr);
+        txtCheckOutRoomNo.setText("");
+        tr.setRowFilter(RowFilter.regexFilter(txtCheckOutRoomNo.getText().trim()));
+        txtCheckOutCOUT.setText("");
+        txtCheckOutName.setText("");
+        txtCheckOutType.setText("");
+        txtCheckOutFee.setText("");
+        txtCheckOutNo.setText("");
+        txtCheckOutTotal.setText("PhP 0.00");
+        JOptionPane.showMessageDialog(this, "Cleared successfully!");
     }
 
     public void Search() {

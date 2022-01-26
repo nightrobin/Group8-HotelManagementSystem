@@ -93,7 +93,32 @@ public class Main extends javax.swing.JFrame {
     }
 
     public void CheckIn() {
+        if (cmbCheckInType.getSelectedItem().equals(" ") || txtCheckInName.getText().equals("") || txtCheckInContact.getText().equals("") || txtCheckInNo.getText().equals("") || txtCheckInCIN.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please completely fill up the information!");
+        }
+        else {
+            String[] checkin = {null, null, cmbCheckInType.getSelectedItem().toString(), txtCheckInName.getText(), txtCheckInCIN.getText(), txtCheckOutCOUT.getText(), null};
+            DefaultTableModel checkinModel = (DefaultTableModel)tableGuestsProfile.getModel();
+            int i = tableGuestsProfile.getSelectedRow();
+            if (i >= 0) {
+                checkin[0] = tableGuestsProfile.getValueAt(i, 0).toString();
+                checkin[1] = tableGuestsProfile.getValueAt(i, 1).toString();
+                tableGuestsProfile.setValueAt(cmbCheckInType.getSelectedItem().toString(),i, 2);
+                tableGuestsProfile.setValueAt(txtCheckInName.getText(), i, 3);
+                tableGuestsProfile.setValueAt(txtCheckInContact.getText(), i, 4);
+                tableGuestsProfile.setValueAt(txtCheckInNo.getText(), i, 5);
+                tableGuestsProfile.setValueAt(txtCheckInCIN.getText(), i, 6);
+                tableGuestsProfile.setValueAt(" ", i, 7);
+                tableGuestsProfile.setValueAt("Booked", i, 8);
 
+            }
+            JOptionPane.showMessageDialog(this, "Checked-in successfully.");
+            cmbCheckInType.setSelectedItem(" ");
+            txtCheckInName.setText("");
+            txtCheckInContact.setText("");
+            txtCheckInNo.setText("");
+            txtCheckInCIN.setText(null);
+        }
     }
 
     public void CheckOut() throws ParseException {

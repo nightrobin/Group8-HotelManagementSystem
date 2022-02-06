@@ -208,11 +208,24 @@ public class Main extends javax.swing.JFrame {
     }
 
     public void Search() {
-
+        String[] checkin = {null, null, cmbCheckInType.getSelectedItem().toString(), txtCheckInName.getText(), txtCheckInCIN.getText(), txtCheckOutCOUT.getText(), null};
+        DefaultTableModel checkinModel = (DefaultTableModel)tableGuestsProfile.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel> (checkinModel);
+        tableGuestsProfile.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(txtSearch.getText().trim()));
     }
 
     public void RevenueSearch() {
-
+        String[] revenue;
+        DefaultTableModel revenueModel = (DefaultTableModel)tableRevenue.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel> (revenueModel);
+        tableRevenue.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(txtRevenueSearch.getText().trim()));
+        double total = 0.0;
+        for (int i = 0; i < tableRevenue.getRowCount(); i++) {
+            total = total + Double.parseDouble(tableRevenue.getValueAt(i, 5).toString());
+        }
+        txtRevenue.setText("PhP " + total);
     }
 
 
@@ -397,15 +410,15 @@ public class Main extends javax.swing.JFrame {
         javax.swing.GroupLayout pnltabHomeLayout = new javax.swing.GroupLayout(pnltabHome);
         pnltabHome.setLayout(pnltabHomeLayout);
         pnltabHomeLayout.setHorizontalGroup(
-            pnltabHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnltabHomeLayout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
-                .addComponent(lblHome)
-                .addGap(23, 23, 23))
+                pnltabHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnltabHomeLayout.createSequentialGroup()
+                                .addContainerGap(22, Short.MAX_VALUE)
+                                .addComponent(lblHome)
+                                .addGap(23, 23, 23))
         );
         pnltabHomeLayout.setVerticalGroup(
-            pnltabHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblHome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                pnltabHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblHome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         lblRooms.setFont(new java.awt.Font("Bebas Neue", 0, 30)); // NOI18N
@@ -435,46 +448,46 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        lblHotelName.setFont(new java.awt.Font("Benguiat", 0, 36)); // NOI18N
+        lblHotelName.setFont(new java.awt.Font("Muthiara", 0, 36)); // NOI18N
         lblHotelName.setForeground(new java.awt.Color(254, 237, 204));
         lblHotelName.setText("HYEITT HOTEL");
 
-        jLabel25.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\NetbeansFiles\\src\\logo.jpg")); // NOI18N
+        jLabel25.setIcon(new javax.swing.ImageIcon("C:\\Users\\WINDOWS 10\\IdeaProjects\\TUESDAY TRIAL\\src\\resources\\images\\logo.jpg")); // NOI18N
         jLabel25.setText("jLabel25");
 
         javax.swing.GroupLayout pnlTopLayout = new javax.swing.GroupLayout(pnlTop);
         pnlTop.setLayout(pnlTopLayout);
         pnlTopLayout.setHorizontalGroup(
-            pnlTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlTopLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblHotelName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(pnltabHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(lblRooms)
-                .addGap(28, 28, 28)
-                .addComponent(lblAmenities)
-                .addGap(26, 26, 26)
-                .addComponent(lblDestinations)
-                .addGap(18, 18, 18))
+                pnlTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlTopLayout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblHotelName)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(pnltabHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(lblRooms)
+                                .addGap(28, 28, 28)
+                                .addComponent(lblAmenities)
+                                .addGap(26, 26, 26)
+                                .addComponent(lblDestinations)
+                                .addGap(18, 18, 18))
         );
         pnlTopLayout.setVerticalGroup(
-            pnlTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnltabHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTopLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlTopLayout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(lblHotelName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addComponent(lblRooms, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblAmenities, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblDestinations, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                pnlTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(pnltabHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTopLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(pnlTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(pnlTopLayout.createSequentialGroup()
+                                                .addGap(5, 5, 5)
+                                                .addComponent(lblHotelName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addContainerGap())
+                        .addComponent(lblRooms, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblAmenities, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblDestinations, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pnlBody.setLayout(new java.awt.CardLayout());
@@ -552,44 +565,44 @@ public class Main extends javax.swing.JFrame {
         });
 
         tableReserve.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"101", null, null, null, null},
-                {"102", null, null, null, null},
-                {"103", null, null, null, null},
-                {"104", null, null, null, null},
-                {"105", null, null, null, null},
-                {"106", null, null, null, null},
-                {"107", null, null, null, null},
-                {"108", null, null, null, null},
-                {"109", null, null, null, null},
-                {"110", null, null, null, null},
-                {"201", null, null, null, null},
-                {"202", null, null, null, null},
-                {"203", null, null, null, null},
-                {"204", null, null, null, null},
-                {"205", null, null, null, null},
-                {"206", null, null, null, null},
-                {"207", null, null, null, null},
-                {"208", null, null, null, null},
-                {"209", null, null, null, null},
-                {"210", null, null, null, null},
-                {"301", null, null, null, null},
-                {"302", null, null, null, null},
-                {"303", null, null, null, null},
-                {"304", null, null, null, null},
-                {"305", null, null, null, null},
-                {"306", null, null, null, null},
-                {"307", null, null, null, null},
-                {"308", null, null, null, null},
-                {"309", null, null, null, null},
-                {"310", null, null, null, null}
-            },
-            new String [] {
-                "Room No.", "Room Type", "Guest's Name", "Check-In", "Check-Out"
-            }
+                new Object [][] {
+                        {"101", null, null, null, null},
+                        {"102", null, null, null, null},
+                        {"103", null, null, null, null},
+                        {"104", null, null, null, null},
+                        {"105", null, null, null, null},
+                        {"106", null, null, null, null},
+                        {"107", null, null, null, null},
+                        {"108", null, null, null, null},
+                        {"109", null, null, null, null},
+                        {"110", null, null, null, null},
+                        {"201", null, null, null, null},
+                        {"202", null, null, null, null},
+                        {"203", null, null, null, null},
+                        {"204", null, null, null, null},
+                        {"205", null, null, null, null},
+                        {"206", null, null, null, null},
+                        {"207", null, null, null, null},
+                        {"208", null, null, null, null},
+                        {"209", null, null, null, null},
+                        {"210", null, null, null, null},
+                        {"301", null, null, null, null},
+                        {"302", null, null, null, null},
+                        {"303", null, null, null, null},
+                        {"304", null, null, null, null},
+                        {"305", null, null, null, null},
+                        {"306", null, null, null, null},
+                        {"307", null, null, null, null},
+                        {"308", null, null, null, null},
+                        {"309", null, null, null, null},
+                        {"310", null, null, null, null}
+                },
+                new String [] {
+                        "Room No.", "Room Type", "Guest's Name", "Check-In", "Check-Out"
+                }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                    false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -610,100 +623,100 @@ public class Main extends javax.swing.JFrame {
         javax.swing.GroupLayout pnlReservationLayout = new javax.swing.GroupLayout(pnlReservation);
         pnlReservation.setLayout(pnlReservationLayout);
         pnlReservationLayout.setHorizontalGroup(
-            pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlReservationLayout.createSequentialGroup()
-                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlReservationLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlReservationLayout.createSequentialGroup()
-                                .addComponent(lblReserveNo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtReserveNo, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReservationLayout.createSequentialGroup()
-                                    .addComponent(lblReserveContact)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtReserveContact, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReservationLayout.createSequentialGroup()
-                                    .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(pnlReservationLayout.createSequentialGroup()
-                                            .addComponent(lblReserveType)
-                                            .addGap(59, 59, 59))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlReservationLayout.createSequentialGroup()
-                                            .addComponent(lblReserveName)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(cmbReserveType, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtReserveName, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(pnlReservationLayout.createSequentialGroup()
+                pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlReservationLayout.createSequentialGroup()
                                 .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblReserveCIN)
-                                    .addComponent(lblReserveCOUT))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtReserveCheckIn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                                    .addComponent(txtReserveCheckOut, javax.swing.GroupLayout.Alignment.LEADING))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReservationLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReservationLayout.createSequentialGroup()
-                                .addComponent(lblReserveCheckOut)
-                                .addGap(126, 126, 126))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReservationLayout.createSequentialGroup()
-                                .addComponent(lblReserveCheckIn)
-                                .addGap(127, 127, 127)))))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReservationLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnReserve)
-                .addGap(18, 18, 18)
-                .addComponent(btnReserveCancel)
-                .addGap(169, 169, 169))
+                                        .addGroup(pnlReservationLayout.createSequentialGroup()
+                                                .addGap(21, 21, 21)
+                                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlReservationLayout.createSequentialGroup()
+                                                                .addComponent(lblReserveNo)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(txtReserveNo, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReservationLayout.createSequentialGroup()
+                                                                        .addComponent(lblReserveContact)
+                                                                        .addGap(18, 18, 18)
+                                                                        .addComponent(txtReserveContact, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReservationLayout.createSequentialGroup()
+                                                                        .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                                                .addGroup(pnlReservationLayout.createSequentialGroup()
+                                                                                        .addComponent(lblReserveType)
+                                                                                        .addGap(59, 59, 59))
+                                                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlReservationLayout.createSequentialGroup()
+                                                                                        .addComponent(lblReserveName)
+                                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                                                        .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                .addComponent(cmbReserveType, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(txtReserveName, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                        .addGroup(pnlReservationLayout.createSequentialGroup()
+                                                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(lblReserveCIN)
+                                                                        .addComponent(lblReserveCOUT))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                                        .addComponent(txtReserveCheckIn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                                                                        .addComponent(txtReserveCheckOut, javax.swing.GroupLayout.Alignment.LEADING))))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReservationLayout.createSequentialGroup()
+                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReservationLayout.createSequentialGroup()
+                                                                .addComponent(lblReserveCheckOut)
+                                                                .addGap(126, 126, 126))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReservationLayout.createSequentialGroup()
+                                                                .addComponent(lblReserveCheckIn)
+                                                                .addGap(127, 127, 127)))))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReservationLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnReserve)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnReserveCancel)
+                                .addGap(169, 169, 169))
         );
         pnlReservationLayout.setVerticalGroup(
-            pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlReservationLayout.createSequentialGroup()
-                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlReservationLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlReservationLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cmbReserveType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblReserveType))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblReserveName)
-                            .addComponent(txtReserveName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblReserveContact)
-                            .addComponent(txtReserveContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblReserveNo)
-                            .addComponent(txtReserveNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
-                        .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblReserveCIN)
-                            .addComponent(txtReserveCheckIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblReserveCheckIn)
-                        .addGap(21, 21, 21)
-                        .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtReserveCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblReserveCOUT))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblReserveCheckOut)))
-                .addGap(18, 18, 18)
-                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnReserve)
-                    .addComponent(btnReserveCancel))
-                .addContainerGap(34, Short.MAX_VALUE))
+                pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlReservationLayout.createSequentialGroup()
+                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pnlReservationLayout.createSequentialGroup()
+                                                .addGap(21, 21, 21)
+                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(pnlReservationLayout.createSequentialGroup()
+                                                .addGap(48, 48, 48)
+                                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(cmbReserveType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(lblReserveType))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(lblReserveName)
+                                                        .addComponent(txtReserveName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(lblReserveContact)
+                                                        .addComponent(txtReserveContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(lblReserveNo)
+                                                        .addComponent(txtReserveNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(26, 26, 26)
+                                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(lblReserveCIN)
+                                                        .addComponent(txtReserveCheckIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(lblReserveCheckIn)
+                                                .addGap(21, 21, 21)
+                                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(txtReserveCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(lblReserveCOUT))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(lblReserveCheckOut)))
+                                .addGap(18, 18, 18)
+                                .addGroup(pnlReservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnReserve)
+                                        .addComponent(btnReserveCancel))
+                                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         tabServices.addTab("Reservation", pnlReservation);
@@ -760,79 +773,79 @@ public class Main extends javax.swing.JFrame {
         javax.swing.GroupLayout pnlCheckInLayout = new javax.swing.GroupLayout(pnlCheckIn);
         pnlCheckIn.setLayout(pnlCheckInLayout);
         pnlCheckInLayout.setHorizontalGroup(
-            pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCheckInLayout.createSequentialGroup()
-                .addContainerGap(111, Short.MAX_VALUE)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 733, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(109, 109, 109))
-            .addGroup(pnlCheckInLayout.createSequentialGroup()
-                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlCheckInLayout.createSequentialGroup()
-                        .addGap(327, 327, 327)
-                        .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlCheckInLayout.createSequentialGroup()
-                                    .addComponent(lblCheckInNo)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtCheckInNo, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                    .addComponent(lblCheckInContact)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtCheckInContact, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                    .addComponent(lblCheckInName)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtCheckInName, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                    .addComponent(lblCheckInCIN)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtCheckInCIN, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(pnlCheckInLayout.createSequentialGroup()
-                                .addComponent(lblCheckInType)
-                                .addGap(59, 59, 59)
-                                .addComponent(cmbCheckInType, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCheckInLayout.createSequentialGroup()
-                                .addComponent(lblCheckInCIN1)
-                                .addGap(51, 51, 51))))
-                    .addGroup(pnlCheckInLayout.createSequentialGroup()
-                        .addGap(376, 376, 376)
-                        .addComponent(btnCheckIn)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCheckInCancel)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCheckInLayout.createSequentialGroup()
+                                .addContainerGap(111, Short.MAX_VALUE)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 733, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(109, 109, 109))
+                        .addGroup(pnlCheckInLayout.createSequentialGroup()
+                                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pnlCheckInLayout.createSequentialGroup()
+                                                .addGap(327, 327, 327)
+                                                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlCheckInLayout.createSequentialGroup()
+                                                                        .addComponent(lblCheckInNo)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                        .addComponent(txtCheckInNo, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addGroup(pnlCheckInLayout.createSequentialGroup()
+                                                                        .addComponent(lblCheckInContact)
+                                                                        .addGap(18, 18, 18)
+                                                                        .addComponent(txtCheckInContact, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addGroup(pnlCheckInLayout.createSequentialGroup()
+                                                                        .addComponent(lblCheckInName)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                        .addComponent(txtCheckInName, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addGroup(pnlCheckInLayout.createSequentialGroup()
+                                                                        .addComponent(lblCheckInCIN)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                        .addComponent(txtCheckInCIN, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addGroup(pnlCheckInLayout.createSequentialGroup()
+                                                                .addComponent(lblCheckInType)
+                                                                .addGap(59, 59, 59)
+                                                                .addComponent(cmbCheckInType, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCheckInLayout.createSequentialGroup()
+                                                                .addComponent(lblCheckInCIN1)
+                                                                .addGap(51, 51, 51))))
+                                        .addGroup(pnlCheckInLayout.createSequentialGroup()
+                                                .addGap(376, 376, 376)
+                                                .addComponent(btnCheckIn)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btnCheckInCancel)))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlCheckInLayout.setVerticalGroup(
-            pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCheckInLayout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblCheckInType)
-                    .addComponent(cmbCheckInType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCheckInName)
-                    .addComponent(txtCheckInName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCheckInContact)
-                    .addComponent(txtCheckInContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCheckInNo)
-                    .addComponent(txtCheckInNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCheckInCIN)
-                    .addComponent(txtCheckInCIN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblCheckInCIN1)
-                .addGap(36, 36, 36)
-                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCheckIn)
-                    .addComponent(btnCheckInCancel))
-                .addGap(40, 40, 40))
+                pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCheckInLayout.createSequentialGroup()
+                                .addContainerGap(50, Short.MAX_VALUE)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblCheckInType)
+                                        .addComponent(cmbCheckInType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(27, 27, 27)
+                                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblCheckInName)
+                                        .addComponent(txtCheckInName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(29, 29, 29)
+                                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblCheckInContact)
+                                        .addComponent(txtCheckInContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(28, 28, 28)
+                                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblCheckInNo)
+                                        .addComponent(txtCheckInNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(32, 32, 32)
+                                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblCheckInCIN)
+                                        .addComponent(txtCheckInCIN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblCheckInCIN1)
+                                .addGap(36, 36, 36)
+                                .addGroup(pnlCheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnCheckIn)
+                                        .addComponent(btnCheckInCancel))
+                                .addGap(40, 40, 40))
         );
 
         tabServices.addTab("Check-In", pnlCheckIn);
@@ -905,130 +918,130 @@ public class Main extends javax.swing.JFrame {
         javax.swing.GroupLayout pnlCheckOutLayout = new javax.swing.GroupLayout(pnlCheckOut);
         pnlCheckOut.setLayout(pnlCheckOutLayout);
         pnlCheckOutLayout.setHorizontalGroup(
-            pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlCheckOutLayout.createSequentialGroup()
-                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlCheckOutLayout.createSequentialGroup()
-                        .addGap(199, 199, 199)
-                        .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlCheckOutLayout.createSequentialGroup()
-                                .addGap(98, 98, 98)
+                pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlCheckOutLayout.createSequentialGroup()
                                 .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblCheckOutName)
-                                    .addComponent(lblCheckOutType)
-                                    .addComponent(lblCheckOutFee)
-                                    .addComponent(lblCheckOutNo)
-                                    .addComponent(lblCheckOutTotal))
-                                .addGap(41, 41, 41)
-                                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCheckOutTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCheckOutNo, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCheckOutFee, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCheckOutType, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCheckOutName, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(pnlCheckOutLayout.createSequentialGroup()
-                                .addComponent(lblCheckOutRoomNo)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtCheckOutRoomNo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(45, 45, 45)
-                                .addComponent(lblCheckOutCOUT)
-                                .addGap(36, 36, 36)
-                                .addComponent(txtCheckOutCOUT, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlCheckOutLayout.createSequentialGroup()
-                                .addGap(176, 176, 176)
-                                .addComponent(btnCheckOut)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnClear))))
-                    .addGroup(pnlCheckOutLayout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 786, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(85, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCheckOutLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblCheckOutDate)
-                .addGap(290, 290, 290))
+                                        .addGroup(pnlCheckOutLayout.createSequentialGroup()
+                                                .addGap(199, 199, 199)
+                                                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(pnlCheckOutLayout.createSequentialGroup()
+                                                                .addGap(98, 98, 98)
+                                                                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(lblCheckOutName)
+                                                                        .addComponent(lblCheckOutType)
+                                                                        .addComponent(lblCheckOutFee)
+                                                                        .addComponent(lblCheckOutNo)
+                                                                        .addComponent(lblCheckOutTotal))
+                                                                .addGap(41, 41, 41)
+                                                                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(txtCheckOutTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(txtCheckOutNo, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(txtCheckOutFee, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(txtCheckOutType, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(txtCheckOutName, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addGroup(pnlCheckOutLayout.createSequentialGroup()
+                                                                .addComponent(lblCheckOutRoomNo)
+                                                                .addGap(18, 18, 18)
+                                                                .addComponent(txtCheckOutRoomNo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(45, 45, 45)
+                                                                .addComponent(lblCheckOutCOUT)
+                                                                .addGap(36, 36, 36)
+                                                                .addComponent(txtCheckOutCOUT, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(pnlCheckOutLayout.createSequentialGroup()
+                                                                .addGap(176, 176, 176)
+                                                                .addComponent(btnCheckOut)
+                                                                .addGap(18, 18, 18)
+                                                                .addComponent(btnClear))))
+                                        .addGroup(pnlCheckOutLayout.createSequentialGroup()
+                                                .addGap(82, 82, 82)
+                                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 786, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(85, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCheckOutLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(lblCheckOutDate)
+                                .addGap(290, 290, 290))
         );
         pnlCheckOutLayout.setVerticalGroup(
-            pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCheckOutLayout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCheckOutRoomNo)
-                    .addComponent(lblCheckOutCOUT)
-                    .addComponent(txtCheckOutCOUT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCheckOutRoomNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblCheckOutDate)
-                .addGap(26, 26, 26)
-                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCheckOutName)
-                    .addComponent(txtCheckOutName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCheckOutType)
-                    .addComponent(txtCheckOutType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCheckOutFee)
-                    .addComponent(txtCheckOutFee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCheckOutNo)
-                    .addComponent(txtCheckOutNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCheckOutTotal)
-                    .addComponent(txtCheckOutTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCheckOut)
-                    .addComponent(btnClear))
-                .addGap(33, 33, 33))
+                pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCheckOutLayout.createSequentialGroup()
+                                .addContainerGap(28, Short.MAX_VALUE)
+                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblCheckOutRoomNo)
+                                        .addComponent(lblCheckOutCOUT)
+                                        .addComponent(txtCheckOutCOUT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtCheckOutRoomNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblCheckOutDate)
+                                .addGap(26, 26, 26)
+                                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblCheckOutName)
+                                        .addComponent(txtCheckOutName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblCheckOutType)
+                                        .addComponent(txtCheckOutType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblCheckOutFee)
+                                        .addComponent(txtCheckOutFee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblCheckOutNo)
+                                        .addComponent(txtCheckOutNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(28, 28, 28)
+                                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblCheckOutTotal)
+                                        .addComponent(txtCheckOutTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(32, 32, 32)
+                                .addGroup(pnlCheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnCheckOut)
+                                        .addComponent(btnClear))
+                                .addGap(33, 33, 33))
         );
 
         tabServices.addTab("Check-Out", pnlCheckOut);
 
         tableGuestsProfile.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"1", "101", null, null, null, null, null, null, "Available"},
-                {"2", "102", null, null, null, null, null, null, "Available"},
-                {"3", "103", null, null, null, null, null, null, "Available"},
-                {"4", "104", null, null, null, null, null, null, "Available"},
-                {"5", "105", null, null, null, null, null, null, "Available"},
-                {"6", "106", null, null, null, null, null, null, "Available"},
-                {"7", "107", null, null, null, null, null, null, "Available"},
-                {"8", "108", null, null, null, null, null, null, "Available"},
-                {"9", "109", null, null, null, null, null, null, "Available"},
-                {"10", "110", null, null, null, null, null, null, "Available"},
-                {"11", "201", null, null, null, null, null, null, "Available"},
-                {"12", "202", null, null, null, null, null, null, "Available"},
-                {"13", "203", null, null, null, null, null, null, "Available"},
-                {"14", "204", null, null, null, null, null, null, "Available"},
-                {"15", "205", null, null, null, null, null, null, "Available"},
-                {"16", "206", null, null, null, null, null, null, "Available"},
-                {"17", "207", null, null, null, null, null, null, "Available"},
-                {"18", "208", null, null, null, null, null, null, "Available"},
-                {"19", "209", null, null, null, null, null, null, "Available"},
-                {"20", "210", null, null, null, null, null, null, "Available"},
-                {"21", "301", null, null, null, null, null, null, "Available"},
-                {"22", "302", null, null, null, null, null, null, "Available"},
-                {"23", "303", null, null, null, null, null, null, "Available"},
-                {"24", "304", null, null, null, null, null, null, "Available"},
-                {"25", "305", null, null, null, null, null, null, "Available"},
-                {"26", "306", null, null, null, null, null, null, "Available"},
-                {"27", "307", null, null, null, null, null, null, "Available"},
-                {"28", "308", null, null, null, null, null, null, "Available"},
-                {"29", "309", null, null, null, null, null, null, "Available"},
-                {"30", "310", null, null, null, null, null, null, "Available"}
-            },
-            new String [] {
-                "#", "Room No.", "Room Type", "Guest's Name", "Contact No.", "No. of Guests", "Check-In", "Check-Out", "Status"
-            }
+                new Object [][] {
+                        {"1", "101", null, null, null, null, null, null, "Available"},
+                        {"2", "102", null, null, null, null, null, null, "Available"},
+                        {"3", "103", null, null, null, null, null, null, "Available"},
+                        {"4", "104", null, null, null, null, null, null, "Available"},
+                        {"5", "105", null, null, null, null, null, null, "Available"},
+                        {"6", "106", null, null, null, null, null, null, "Available"},
+                        {"7", "107", null, null, null, null, null, null, "Available"},
+                        {"8", "108", null, null, null, null, null, null, "Available"},
+                        {"9", "109", null, null, null, null, null, null, "Available"},
+                        {"10", "110", null, null, null, null, null, null, "Available"},
+                        {"11", "201", null, null, null, null, null, null, "Available"},
+                        {"12", "202", null, null, null, null, null, null, "Available"},
+                        {"13", "203", null, null, null, null, null, null, "Available"},
+                        {"14", "204", null, null, null, null, null, null, "Available"},
+                        {"15", "205", null, null, null, null, null, null, "Available"},
+                        {"16", "206", null, null, null, null, null, null, "Available"},
+                        {"17", "207", null, null, null, null, null, null, "Available"},
+                        {"18", "208", null, null, null, null, null, null, "Available"},
+                        {"19", "209", null, null, null, null, null, null, "Available"},
+                        {"20", "210", null, null, null, null, null, null, "Available"},
+                        {"21", "301", null, null, null, null, null, null, "Available"},
+                        {"22", "302", null, null, null, null, null, null, "Available"},
+                        {"23", "303", null, null, null, null, null, null, "Available"},
+                        {"24", "304", null, null, null, null, null, null, "Available"},
+                        {"25", "305", null, null, null, null, null, null, "Available"},
+                        {"26", "306", null, null, null, null, null, null, "Available"},
+                        {"27", "307", null, null, null, null, null, null, "Available"},
+                        {"28", "308", null, null, null, null, null, null, "Available"},
+                        {"29", "309", null, null, null, null, null, null, "Available"},
+                        {"30", "310", null, null, null, null, null, null, "Available"}
+                },
+                new String [] {
+                        "#", "Room No.", "Room Type", "Guest's Name", "Contact No.", "No. of Guests", "Check-In", "Check-Out", "Status"
+                }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, true
+                    false, false, false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1083,35 +1096,35 @@ public class Main extends javax.swing.JFrame {
         javax.swing.GroupLayout pnlRoomsProfileLayout = new javax.swing.GroupLayout(pnlRoomsProfile);
         pnlRoomsProfile.setLayout(pnlRoomsProfileLayout);
         pnlRoomsProfileLayout.setHorizontalGroup(
-            pnlRoomsProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRoomsProfileLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 860, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRoomsProfileLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnSearch)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnRoomsClear)
-                .addGap(235, 235, 235))
+                pnlRoomsProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlRoomsProfileLayout.createSequentialGroup()
+                                .addGap(46, 46, 46)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 860, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(47, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRoomsProfileLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnSearch)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnRoomsClear)
+                                .addGap(235, 235, 235))
         );
         pnlRoomsProfileLayout.setVerticalGroup(
-            pnlRoomsProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRoomsProfileLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(pnlRoomsProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlRoomsProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnSearch)
-                        .addComponent(btnRoomsClear)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
-                .addContainerGap())
+                pnlRoomsProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRoomsProfileLayout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addGroup(pnlRoomsProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(pnlRoomsProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(btnSearch)
+                                                .addComponent(btnRoomsClear)))
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                                .addContainerGap())
         );
 
         tabServices.addTab("Rooms/Profile", pnlRoomsProfile);
@@ -1127,15 +1140,15 @@ public class Main extends javax.swing.JFrame {
         });
 
         tableRevenue.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                new Object [][] {
 
-            },
-            new String [] {
-                "Check-Out ", "Room No.", "Room Type", "Room Price", "No. of Hours Stayed", "Total"
-            }
+                },
+                new String [] {
+                        "Check-Out ", "Room No.", "Room Type", "Room Price", "No. of Hours Stayed", "Total"
+                }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                    false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1181,43 +1194,43 @@ public class Main extends javax.swing.JFrame {
         javax.swing.GroupLayout pnlRevenueSearchLayout = new javax.swing.GroupLayout(pnlRevenueSearch);
         pnlRevenueSearch.setLayout(pnlRevenueSearchLayout);
         pnlRevenueSearchLayout.setHorizontalGroup(
-            pnlRevenueSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRevenueSearchLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addGroup(pnlRevenueSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblRevenue)
-                    .addComponent(txtRevenueSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCheckInContact1)
-                    .addComponent(txtRevenue, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlRevenueSearchLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(btnRevenueSearch)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRevenueClear)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 681, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                pnlRevenueSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlRevenueSearchLayout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addGroup(pnlRevenueSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblRevenue)
+                                        .addComponent(txtRevenueSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblCheckInContact1)
+                                        .addComponent(txtRevenue, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(pnlRevenueSearchLayout.createSequentialGroup()
+                                                .addGap(10, 10, 10)
+                                                .addComponent(btnRevenueSearch)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btnRevenueClear)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 681, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
         );
         pnlRevenueSearchLayout.setVerticalGroup(
-            pnlRevenueSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRevenueSearchLayout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(lblCheckInContact1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtRevenueSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlRevenueSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRevenueSearch)
-                    .addComponent(btnRevenueClear))
-                .addGap(79, 79, 79)
-                .addComponent(lblRevenue)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtRevenue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(121, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRevenueSearchLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
+                pnlRevenueSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlRevenueSearchLayout.createSequentialGroup()
+                                .addGap(78, 78, 78)
+                                .addComponent(lblCheckInContact1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtRevenueSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlRevenueSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnRevenueSearch)
+                                        .addComponent(btnRevenueClear))
+                                .addGap(79, 79, 79)
+                                .addComponent(lblRevenue)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtRevenue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(121, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRevenueSearchLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addContainerGap())
         );
 
         tabServices.addTab("Revenue", pnlRevenueSearch);
@@ -1225,43 +1238,708 @@ public class Main extends javax.swing.JFrame {
         javax.swing.GroupLayout pnlHomeTabLayout = new javax.swing.GroupLayout(pnlHomeTab);
         pnlHomeTab.setLayout(pnlHomeTabLayout);
         pnlHomeTabLayout.setHorizontalGroup(
-            pnlHomeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlHomeTabLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlHomeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tabServices)
-                    .addGroup(pnlHomeTabLayout.createSequentialGroup()
-                        .addComponent(jSeparator4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblServices)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 828, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                pnlHomeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlHomeTabLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(pnlHomeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tabServices)
+                                        .addGroup(pnlHomeTabLayout.createSequentialGroup()
+                                                .addComponent(jSeparator4)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(lblServices)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 828, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap())
         );
         pnlHomeTabLayout.setVerticalGroup(
-            pnlHomeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlHomeTabLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlHomeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlHomeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                pnlHomeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pnlHomeTabLayout.createSequentialGroup()
-                            .addComponent(lblServices)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHomeTabLayout.createSequentialGroup()
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(35, 35, 35)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHomeTabLayout.createSequentialGroup()
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)))
-                .addComponent(tabServices)
-                .addContainerGap())
+                                .addContainerGap()
+                                .addGroup(pnlHomeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pnlHomeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(pnlHomeTabLayout.createSequentialGroup()
+                                                        .addComponent(lblServices)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHomeTabLayout.createSequentialGroup()
+                                                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(35, 35, 35)))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHomeTabLayout.createSequentialGroup()
+                                                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(35, 35, 35)))
+                                .addComponent(tabServices)
+                                .addContainerGap())
         );
 
         tabServices.getAccessibleContext().setAccessibleDescription("");
 
         pnlBody.add(pnlHomeTab, "card2");
 
+        pnlRoomTab.setBackground(new java.awt.Color(92, 130, 143));
 
+        lblServices1.setFont(new java.awt.Font("Bebas Neue", 0, 48)); // NOI18N
+        lblServices1.setForeground(new java.awt.Color(254, 237, 204));
+        lblServices1.setText("Rooms");
+
+        lblSingle.setIcon(new javax.swing.ImageIcon("C:\\Users\\WINDOWS 10\\IdeaProjects\\TUESDAY TRIAL\\src\\resources\\images\\single.jpg")); // NOI18N
+
+        lblDouble.setIcon(new javax.swing.ImageIcon("C:\\Users\\WINDOWS 10\\IdeaProjects\\TUESDAY TRIAL\\src\\resources\\images\\double.jpg")); // NOI18N
+
+        lblDeluxe.setIcon(new javax.swing.ImageIcon("C:\\Users\\WINDOWS 10\\IdeaProjects\\TUESDAY TRIAL\\src\\resources\\images\\deluxesuite.jpg")); // NOI18N
+
+        txtareaSingle.setEditable(false);
+        txtareaSingle.setBackground(new java.awt.Color(92, 130, 143));
+        txtareaSingle.setColumns(20);
+        txtareaSingle.setFont(new java.awt.Font("Bebas Neue", 0, 20)); // NOI18N
+        txtareaSingle.setForeground(new java.awt.Color(254, 237, 204));
+        txtareaSingle.setLineWrap(true);
+        txtareaSingle.setRows(5);
+        txtareaSingle.setText("PhP 3,999/Night\n\nOur single rooms feature sleek design, and luxurious amenities including wood flooring, plush bedding, a sofa and a work desk.");
+        txtareaSingle.setWrapStyleWord(true);
+        txtareaSingle.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jScrollPane5.setViewportView(txtareaSingle);
+
+        lblRoomsSingle.setFont(new java.awt.Font("Bebas Neue", 0, 48)); // NOI18N
+        lblRoomsSingle.setForeground(new java.awt.Color(254, 237, 204));
+        lblRoomsSingle.setText("Single");
+
+        txtareaDouble.setEditable(false);
+        txtareaDouble.setBackground(new java.awt.Color(92, 130, 143));
+        txtareaDouble.setColumns(20);
+        txtareaDouble.setFont(new java.awt.Font("Bebas Neue", 0, 20)); // NOI18N
+        txtareaDouble.setForeground(new java.awt.Color(254, 237, 204));
+        txtareaDouble.setLineWrap(true);
+        txtareaDouble.setRows(5);
+        txtareaDouble.setText("PhP 5,999/Night\n\nOur double rooms feature sleek designs and luxurious amenities at every turn, which are ideal for business or leisure travelers staying in Manila.");
+        txtareaDouble.setWrapStyleWord(true);
+        txtareaDouble.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jScrollPane6.setViewportView(txtareaDouble);
+
+        lblRoomsDouble.setFont(new java.awt.Font("Bebas Neue", 0, 48)); // NOI18N
+        lblRoomsDouble.setForeground(new java.awt.Color(254, 237, 204));
+        lblRoomsDouble.setText("Double");
+
+        txtareaDeluxeSuite.setEditable(false);
+        txtareaDeluxeSuite.setBackground(new java.awt.Color(92, 130, 143));
+        txtareaDeluxeSuite.setColumns(20);
+        txtareaDeluxeSuite.setFont(new java.awt.Font("Bebas Neue", 0, 20)); // NOI18N
+        txtareaDeluxeSuite.setForeground(new java.awt.Color(254, 237, 204));
+        txtareaDeluxeSuite.setLineWrap(true);
+        txtareaDeluxeSuite.setRows(5);
+        txtareaDeluxeSuite.setText("PhP 10,999/Night\n\nOur deluxe suite is the perfect fit for family staycations, since it has plenty of space to stretch out and access to the Executive Lounge, where you can enjoy all-day cocktails and plenty of privacy.");
+        txtareaDeluxeSuite.setWrapStyleWord(true);
+        txtareaDeluxeSuite.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jScrollPane7.setViewportView(txtareaDeluxeSuite);
+
+        lblRoomsDeluxeSuite.setFont(new java.awt.Font("Bebas Neue", 0, 48)); // NOI18N
+        lblRoomsDeluxeSuite.setForeground(new java.awt.Color(254, 237, 204));
+        lblRoomsDeluxeSuite.setText("Deluxe Suite");
+
+        javax.swing.GroupLayout pnlRoomTabLayout = new javax.swing.GroupLayout(pnlRoomTab);
+        pnlRoomTab.setLayout(pnlRoomTabLayout);
+        pnlRoomTabLayout.setHorizontalGroup(
+                pnlRoomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlRoomTabLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jSeparator8, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblServices1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 828, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                        .addGroup(pnlRoomTabLayout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addGroup(pnlRoomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblSingle, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(pnlRoomTabLayout.createSequentialGroup()
+                                                .addGap(10, 10, 10)
+                                                .addGroup(pnlRoomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(lblRoomsSingle)
+                                                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(pnlRoomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblDouble, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(pnlRoomTabLayout.createSequentialGroup()
+                                                .addGap(10, 10, 10)
+                                                .addGroup(pnlRoomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(lblRoomsDouble)
+                                                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(39, 39, 39)
+                                .addGroup(pnlRoomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pnlRoomTabLayout.createSequentialGroup()
+                                                .addGap(10, 10, 10)
+                                                .addGroup(pnlRoomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(lblRoomsDeluxeSuite)
+                                                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(lblDeluxe, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(41, 41, 41))
+        );
+        pnlRoomTabLayout.setVerticalGroup(
+                pnlRoomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlRoomTabLayout.createSequentialGroup()
+                                .addGroup(pnlRoomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pnlRoomTabLayout.createSequentialGroup()
+                                                .addGap(37, 37, 37)
+                                                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(pnlRoomTabLayout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(lblServices1))
+                                        .addGroup(pnlRoomTabLayout.createSequentialGroup()
+                                                .addGap(37, 37, 37)
+                                                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnlRoomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblSingle, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblDouble, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblDeluxe, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnlRoomTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pnlRoomTabLayout.createSequentialGroup()
+                                                .addComponent(lblRoomsDouble)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE))
+                                        .addGroup(pnlRoomTabLayout.createSequentialGroup()
+                                                .addComponent(lblRoomsSingle)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jScrollPane5))
+                                        .addGroup(pnlRoomTabLayout.createSequentialGroup()
+                                                .addComponent(lblRoomsDeluxeSuite)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jScrollPane7)))
+                                .addContainerGap())
+        );
+
+        pnlBody.add(pnlRoomTab, "card2");
+
+        pnlAmenities.setBackground(new java.awt.Color(92, 130, 143));
+
+        lblServices2.setFont(new java.awt.Font("Bebas Neue", 0, 48)); // NOI18N
+        lblServices2.setForeground(new java.awt.Color(254, 237, 204));
+        lblServices2.setText("Amenities");
+
+        lblGym.setIcon(new javax.swing.ImageIcon("C:\\Users\\WINDOWS 10\\IdeaProjects\\TUESDAY TRIAL\\src\\resources\\images\\gym.jpg")); // NOI18N
+        lblGym.setText("jLabel1");
+
+        lblDining.setIcon(new javax.swing.ImageIcon("C:\\Users\\WINDOWS 10\\IdeaProjects\\TUESDAY TRIAL\\src\\resources\\images\\dining.jpg")); // NOI18N
+        lblDining.setText("jLabel1");
+
+        lblSwimmingPool.setIcon(new javax.swing.ImageIcon("C:\\Users\\WINDOWS 10\\IdeaProjects\\TUESDAY TRIAL\\src\\resources\\images\\swimmingpool.jpg")); // NOI18N
+        lblSwimmingPool.setText("jLabel1");
+
+        lblSpa.setIcon(new javax.swing.ImageIcon("C:\\Users\\WINDOWS 10\\IdeaProjects\\TUESDAY TRIAL\\src\\resources\\images\\spa.jpg")); // NOI18N
+        lblSpa.setText("jLabel1");
+
+        lblAmSwimmingPool.setFont(new java.awt.Font("Bebas Neue", 0, 30)); // NOI18N
+        lblAmSwimmingPool.setForeground(new java.awt.Color(254, 237, 204));
+        lblAmSwimmingPool.setText("Swimming Pool");
+
+        lblAmDining.setFont(new java.awt.Font("Bebas Neue", 0, 30)); // NOI18N
+        lblAmDining.setForeground(new java.awt.Color(254, 237, 204));
+        lblAmDining.setText("Dining");
+
+        lblAmGym.setFont(new java.awt.Font("Bebas Neue", 0, 30)); // NOI18N
+        lblAmGym.setForeground(new java.awt.Color(254, 237, 204));
+        lblAmGym.setText("Gym");
+
+        lblAmSpa.setFont(new java.awt.Font("Bebas Neue", 0, 30)); // NOI18N
+        lblAmSpa.setForeground(new java.awt.Color(254, 237, 204));
+        lblAmSpa.setText("Spa");
+
+        txtareaDining.setEditable(false);
+        txtareaDining.setBackground(new java.awt.Color(92, 130, 143));
+        txtareaDining.setColumns(20);
+        txtareaDining.setFont(new java.awt.Font("Bebas Neue", 0, 18)); // NOI18N
+        txtareaDining.setForeground(new java.awt.Color(254, 237, 204));
+        txtareaDining.setLineWrap(true);
+        txtareaDining.setRows(5);
+        txtareaDining.setText("Have a taste of world-class cuisine and amazing desserts from an award-winning team of kitchen experts.");
+        txtareaDining.setWrapStyleWord(true);
+        txtareaDining.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jScrollPane4.setViewportView(txtareaDining);
+
+        txtareaPool.setEditable(false);
+        txtareaPool.setBackground(new java.awt.Color(92, 130, 143));
+        txtareaPool.setColumns(20);
+        txtareaPool.setFont(new java.awt.Font("Bebas Neue", 0, 18)); // NOI18N
+        txtareaPool.setForeground(new java.awt.Color(254, 237, 204));
+        txtareaPool.setLineWrap(true);
+        txtareaPool.setRows(5);
+        txtareaPool.setText("Have a dip in the pool while enjoying the magnificent view.");
+        txtareaPool.setWrapStyleWord(true);
+        txtareaPool.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jScrollPane8.setViewportView(txtareaPool);
+
+        txtareaPool1.setEditable(false);
+        txtareaPool1.setBackground(new java.awt.Color(92, 130, 143));
+        txtareaPool1.setColumns(20);
+        txtareaPool1.setFont(new java.awt.Font("Bebas Neue", 0, 18)); // NOI18N
+        txtareaPool1.setForeground(new java.awt.Color(254, 237, 204));
+        txtareaPool1.setLineWrap(true);
+        txtareaPool1.setRows(5);
+        txtareaPool1.setText("A fully equipped gym that offers innovative equipment for cardio, resistance and core trainings.");
+        txtareaPool1.setWrapStyleWord(true);
+        txtareaPool1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jScrollPane9.setViewportView(txtareaPool1);
+
+        txtareaPool2.setEditable(false);
+        txtareaPool2.setBackground(new java.awt.Color(92, 130, 143));
+        txtareaPool2.setColumns(20);
+        txtareaPool2.setFont(new java.awt.Font("Bebas Neue", 0, 18)); // NOI18N
+        txtareaPool2.setForeground(new java.awt.Color(254, 237, 204));
+        txtareaPool2.setLineWrap(true);
+        txtareaPool2.setRows(5);
+        txtareaPool2.setText("Rediscover your balance with an invigorating body scrub, beauty treatment in a relaxing, tranquil setting at PRO Spa, just steps from your room at Manila HYEITT Hotel.");
+        txtareaPool2.setWrapStyleWord(true);
+        txtareaPool2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jScrollPane10.setViewportView(txtareaPool2);
+
+        javax.swing.GroupLayout pnlAmenitiesLayout = new javax.swing.GroupLayout(pnlAmenities);
+        pnlAmenities.setLayout(pnlAmenitiesLayout);
+        pnlAmenitiesLayout.setHorizontalGroup(
+                pnlAmenitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlAmenitiesLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(pnlAmenitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pnlAmenitiesLayout.createSequentialGroup()
+                                                .addComponent(jSeparator10, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(lblServices2)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 828, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(pnlAmenitiesLayout.createSequentialGroup()
+                                                .addGroup(pnlAmenitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(pnlAmenitiesLayout.createSequentialGroup()
+                                                                .addComponent(lblSwimmingPool, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addGroup(pnlAmenitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(lblAmSwimmingPool)
+                                                                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addGroup(pnlAmenitiesLayout.createSequentialGroup()
+                                                                .addComponent(lblDining, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addGroup(pnlAmenitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(lblAmDining)
+                                                                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addGap(33, 33, 33)
+                                                .addGroup(pnlAmenitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(pnlAmenitiesLayout.createSequentialGroup()
+                                                                .addComponent(lblSpa, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGroup(pnlAmenitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(pnlAmenitiesLayout.createSequentialGroup()
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                                .addComponent(lblAmSpa)
+                                                                                .addGap(153, 153, 153))
+                                                                        .addGroup(pnlAmenitiesLayout.createSequentialGroup()
+                                                                                .addGap(10, 10, 10)
+                                                                                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
+                                                        .addGroup(pnlAmenitiesLayout.createSequentialGroup()
+                                                                .addComponent(lblGym, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addGroup(pnlAmenitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(pnlAmenitiesLayout.createSequentialGroup()
+                                                                                .addComponent(lblAmGym)
+                                                                                .addGap(0, 0, Short.MAX_VALUE))
+                                                                        .addComponent(jScrollPane9))))))
+                                .addContainerGap())
+        );
+        pnlAmenitiesLayout.setVerticalGroup(
+                pnlAmenitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlAmenitiesLayout.createSequentialGroup()
+                                .addGroup(pnlAmenitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pnlAmenitiesLayout.createSequentialGroup()
+                                                .addGap(37, 37, 37)
+                                                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(pnlAmenitiesLayout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(lblServices2))
+                                        .addGroup(pnlAmenitiesLayout.createSequentialGroup()
+                                                .addGap(37, 37, 37)
+                                                .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(37, 37, 37)
+                                .addGroup(pnlAmenitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblDining, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(pnlAmenitiesLayout.createSequentialGroup()
+                                                .addComponent(lblAmDining)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(pnlAmenitiesLayout.createSequentialGroup()
+                                                .addComponent(lblAmGym)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(lblGym, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(48, 48, 48)
+                                .addGroup(pnlAmenitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pnlAmenitiesLayout.createSequentialGroup()
+                                                .addComponent(lblAmSwimmingPool)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
+                                        .addGroup(pnlAmenitiesLayout.createSequentialGroup()
+                                                .addGroup(pnlAmenitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(lblSpa, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(lblSwimmingPool, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                        .addGroup(pnlAmenitiesLayout.createSequentialGroup()
+                                                .addComponent(lblAmSpa)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jScrollPane10)))
+                                .addGap(27, 27, 27))
+        );
+
+        pnlBody.add(pnlAmenities, "card2");
+
+        pnlDestinations.setBackground(new java.awt.Color(92, 130, 143));
+
+        lblServices3.setFont(new java.awt.Font("Bebas Neue", 0, 48)); // NOI18N
+        lblServices3.setForeground(new java.awt.Color(254, 237, 204));
+        lblServices3.setText("Destinations");
+
+        lblMalls.setFont(new java.awt.Font("Bebas Neue", 0, 36)); // NOI18N
+        lblMalls.setForeground(new java.awt.Color(254, 237, 204));
+        lblMalls.setText("Golf Nearby");
+
+        lblMalls1.setFont(new java.awt.Font("Bebas Neue", 0, 38)); // NOI18N
+        lblMalls1.setForeground(new java.awt.Color(254, 237, 204));
+        lblMalls1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMalls1.setText("Malls");
+
+        lblMalls2.setFont(new java.awt.Font("Bebas Neue", 0, 36)); // NOI18N
+        lblMalls2.setForeground(new java.awt.Color(254, 237, 204));
+        lblMalls2.setText("Attractions");
+
+        jLabel1.setFont(new java.awt.Font("Bebas Neue", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel1.setText("Greenbelt");
+
+        jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 15)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel2.setText("Metro Manila, Legazpi Street");
+
+        jLabel3.setFont(new java.awt.Font("Bebas Neue", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel3.setText("Newport Mall");
+
+        jLabel4.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 15)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel4.setText("1309 Metro Manila, Newport Blvd");
+
+        jLabel5.setFont(new java.awt.Font("Bebas Neue", 0, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel5.setText("Ayala malls manila bay");
+
+        jLabel6.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 15)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel6.setText("1300 Metro Manila,123 Seaside Blvd, Pasay  ");
+
+        jLabel7.setFont(new java.awt.Font("Bebas Neue", 0, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel7.setText("sm mall of asia");
+
+        jLabel8.setFont(new java.awt.Font("Bebas Neue", 0, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel8.setText("venice grand canal mall");
+
+        jLabel9.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 15)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel9.setText("1630 Metro Manila,1630 Upper McKinley Road McKinley");
+
+        jLabel10.setFont(new java.awt.Font("Bebas Neue", 0, 24)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel10.setText("sm aura premier");
+
+        jLabel11.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 15)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel11.setText("1630 Metro Manila,26th Street, Corner McKinley Pkw");
+
+        jLabel12.setFont(new java.awt.Font("Bebas Neue", 0, 24)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel12.setText("Manila Ocean Park");
+
+        jLabel13.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 15)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel13.setText("666 Behind Quirino Grandstand, Luneta");
+
+        jLabel14.setFont(new java.awt.Font("Bebas Neue", 0, 24)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel14.setText("fort santiago park");
+
+        jLabel15.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 15)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel15.setText("1000 Metro Manila, Roxas Blvd, Malate");
+
+        jLabel16.setFont(new java.awt.Font("Bebas Neue", 0, 24)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel16.setText("intramuros - the walled city");
+
+        jLabel17.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 15)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel17.setText("1002 Metro Manila");
+
+        jLabel18.setFont(new java.awt.Font("Bebas Neue", 0, 24)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel18.setText("kidzania manila");
+
+        jLabel19.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 15)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel19.setText("North, 11th Ave,1634 Metro Manila");
+
+        jLabel20.setFont(new java.awt.Font("Bebas Neue", 0, 24)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel20.setText("rockwell center");
+
+        jLabel21.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 15)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel21.setText("8 Rockwell, Hidalgo Drive, Rockwell Center");
+
+        jLabel22.setFont(new java.awt.Font("Bebas Neue", 0, 24)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel22.setText("Baywalk");
+
+        jLabel23.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 15)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel23.setText("1004 Metro Manila,Roxas Blvd, Malate");
+
+        jLabel24.setFont(new java.awt.Font("Bebas Neue", 0, 24)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel24.setText("Villamor Golf club");
+
+        jLabel26.setFont(new java.awt.Font("Bebas Neue", 0, 24)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel26.setText("Wack Wack golf and country club");
+
+        jLabel28.setFont(new java.awt.Font("Bebas Neue", 0, 24)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel28.setText("manila southwoods golf and country club");
+
+        jLabel30.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 15)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel30.setText("The Villamor Golf Course is fairly flat, but still challenging to golfers of all");
+
+        jLabel31.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 15)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel31.setText("standards due to the trees and water hazards.");
+
+        jLabel32.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 15)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel32.setText("The Manila Southwoods Golf and Country Club is designed to be the ");
+
+        jLabel33.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 15)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel33.setText("consummate golf and leisure experience, an environmentally responsible ");
+
+        jLabel34.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 15)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(254, 237, 204));
+        jLabel34.setText("haven with reputation for service excellence.");
+
+        javax.swing.GroupLayout pnlDestinationsLayout = new javax.swing.GroupLayout(pnlDestinations);
+        pnlDestinations.setLayout(pnlDestinationsLayout);
+        pnlDestinationsLayout.setHorizontalGroup(
+                pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblServices3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 791, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                        .addGap(66, 66, 66)
+                                        .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                                        .addGap(10, 10, 10)
+                                                        .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                                                        .addComponent(jLabel22)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                        .addComponent(jLabel23))
+                                                                .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                                                        .addComponent(jLabel14)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                        .addComponent(jLabel15))
+                                                                .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                                                        .addComponent(jLabel12)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                        .addComponent(jLabel13))
+                                                                .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                                                        .addComponent(jLabel16)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                        .addComponent(jLabel17))
+                                                                .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                                                        .addComponent(jLabel18)
+                                                                        .addGap(18, 18, 18)
+                                                                        .addComponent(jLabel19))
+                                                                .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                                                        .addComponent(jLabel20)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                        .addComponent(jLabel21)))
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(jLabel26)
+                                                                .addComponent(jLabel24)
+                                                                .addComponent(jLabel28)
+                                                                .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                                                        .addGap(49, 49, 49)
+                                                                        .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                                .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                        .addComponent(jLabel33)
+                                                                                        .addComponent(jLabel32)
+                                                                                        .addComponent(jLabel34))
+                                                                                .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                        .addComponent(jLabel31)
+                                                                                        .addComponent(jLabel30)))))
+                                                        .addGap(133, 133, 133))
+                                                .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                                        .addComponent(lblMalls1)
+                                                        .addGap(491, 491, 491))))
+                                .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                        .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                                        .addGap(76, 76, 76)
+                                                        .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                                                        .addComponent(jLabel10)
+                                                                        .addGap(18, 18, 18)
+                                                                        .addComponent(jLabel11))
+                                                                .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                                                        .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                                                                        .addComponent(jLabel1)
+                                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                        .addComponent(jLabel2))
+                                                                                .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                                                                        .addComponent(jLabel3)
+                                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                                        .addComponent(jLabel4)))
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                        .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                                                                        .addGap(53, 53, 53)
+                                                                                        .addComponent(jLabel8)
+                                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                        .addComponent(jLabel9))
+                                                                                .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                                                                        .addComponent(jLabel5)
+                                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                        .addComponent(jLabel7)
+                                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                        .addComponent(jLabel6))))))
+                                                .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                                        .addContainerGap()
+                                                        .addComponent(lblMalls2)
+                                                        .addGap(363, 363, 363)
+                                                        .addComponent(lblMalls)
+                                                        .addGap(288, 288, 288)))
+                                        .addGap(109, 109, 109)))
+        );
+        pnlDestinationsLayout.setVerticalGroup(
+                pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                                .addGap(37, 37, 37)
+                                                .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(lblServices3))
+                                        .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                                .addGap(36, 36, 36)
+                                                .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblMalls1)
+                                .addGap(3, 3, 3)
+                                .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                                .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel1)
+                                                        .addComponent(jLabel2))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel3)
+                                                        .addComponent(jLabel4)))
+                                        .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                                .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel5)
+                                                        .addComponent(jLabel7)
+                                                        .addComponent(jLabel6))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel8)
+                                                        .addComponent(jLabel9))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel10)
+                                        .addComponent(jLabel11))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                                .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDestinationsLayout.createSequentialGroup()
+                                                .addComponent(lblMalls2)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                .addComponent(jLabel16)
+                                                                .addComponent(jLabel17))
+                                                        .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                                                .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                        .addComponent(jLabel12)
+                                                                        .addComponent(jLabel13))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                        .addComponent(jLabel14)
+                                                                        .addComponent(jLabel15))
+                                                                .addGap(38, 38, 38)))
+                                                .addGap(6, 6, 6)
+                                                .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel18)
+                                                        .addComponent(jLabel19))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel20)
+                                                        .addComponent(jLabel21))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel22)
+                                                        .addComponent(jLabel23))
+                                                .addGap(24, 24, 24))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDestinationsLayout.createSequentialGroup()
+                                                .addComponent(lblMalls)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel24)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel30)
+                                                .addGap(4, 4, 4)
+                                                .addComponent(jLabel31)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGroup(pnlDestinationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel28, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addGroup(pnlDestinationsLayout.createSequentialGroup()
+                                                                .addComponent(jLabel26)
+                                                                .addGap(38, 38, 38)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel32)
+                                                .addGap(4, 4, 4)
+                                                .addComponent(jLabel33)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel34)
+                                                .addGap(34, 34, 34))))
+        );
+
+        pnlBody.add(pnlDestinations, "card2");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(pnlTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pnlBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(pnlTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pnlBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnReserveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReserveActionPerformed
@@ -1292,7 +1970,7 @@ public class Main extends javax.swing.JFrame {
         try {
             CheckOut();
         } catch (ParseException ex) {
-            Logger.getLogger(NewProposal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnCheckOutActionPerformed
 
@@ -1385,13 +2063,13 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewProposal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewProposal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewProposal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewProposal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -1413,7 +2091,7 @@ public class Main extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewProposal().setVisible(true);
+                new Main().setVisible(true);
             }
         });
     }
